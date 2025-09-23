@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);CA1848;MA0004;CA2007</NoWarn>
+        <OutputType>Exe</OutputType>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningLevel>0</WarningLevel>
+        <WarningsAsErrors>false</WarningsAsErrors>
+    </PropertyGroup>
+
+    <ItemGroup>
+
+        <PackageReference Include="AcidJunkie.Analyzers" Version="1.0.0-prerelease-86">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.8"/>
+    </ItemGroup>
+
+</Project>
