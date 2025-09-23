@@ -18,13 +18,16 @@
         <!-- MA0026: We know TODO items should be tackled, let's not create Errors for them -->
         <!-- S1185:  We know TODO items should be tackled, let's not create Errors for them -->
         <WarningsNotAsErrors>MA0025;MA0026</WarningsNotAsErrors>
+        
+        <!-- See https://github.com/dotnet/roslyn/blob/a6013f3213c902c0973b2d371c3007217d610533/docs/compilers/CSharp/Warnversion%20Warning%20Waves.md -->
         <WarningLevel>9999</WarningLevel>
+        
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
         <AnalysisLevel>latest</AnalysisLevel>
         <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
-        <LangVersion>13</LangVersion>
+        <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <IsPackable>true</IsPackable>
@@ -34,6 +37,9 @@
         <TargetFramework>net9.0</TargetFramework>
         <PackageProjectUrl>https://github.com/SyntaxInspectors/SyntaxInspectors.Analyzers</PackageProjectUrl>
         <RepositoryUrl>https://github.com/SyntaxInspectors/SyntaxInspectors.Analyzers</RepositoryUrl>
+
+        <!-- See https://www.meziantou.net/csharp-compiler-strict-mode.htm -->
+        <Features>strict</Features>
     </PropertyGroup>
 
     <ItemGroup>

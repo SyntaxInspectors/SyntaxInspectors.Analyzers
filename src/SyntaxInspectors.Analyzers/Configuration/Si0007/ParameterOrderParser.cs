@@ -28,7 +28,7 @@ internal static class ParameterOrderParser
 
     private static Regex TransformToRegex(string expression)
     {
-        var pattern = @$"\A{Regex.Escape(expression).Replace(@"\*", ".*")}\z";
+        var pattern = @$"\A{Regex.Escape(expression).Replace(@"\*", ".*", StringComparison.Ordinal)}\z";
         return new Regex(pattern, RegexOptions.Compiled, TimeSpan.FromSeconds(1));
     }
 }
