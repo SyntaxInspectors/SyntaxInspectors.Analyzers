@@ -1,10 +1,10 @@
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Diagnosers;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Diagnosers;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
 
-namespace AcidJunkie.Analyzers.Extensions;
+namespace SyntaxInspectors.Analyzers.Extensions;
 
 internal static class CompilationAnalysisContextExtensions
 {

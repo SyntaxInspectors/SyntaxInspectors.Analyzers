@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.TaskCreationWithMaterializedCollectionAsEnumerable;
+using SyntaxInspectors.Analyzers.Diagnosers.TaskCreationWithMaterializedCollectionAsEnumerable;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
 public sealed class TaskCreationWithMaterializedCollectionAsEnumerableAnalyzerTests(ITestOutputHelper testOutputHelper) : TestBase<TaskCreationWithMaterializedCollectionAsEnumerableAnalyzer>(testOutputHelper)
@@ -22,7 +22,7 @@ public sealed class TaskCreationWithMaterializedCollectionAsEnumerableAnalyzerTe
                             {
                                 public void TestMethod()
                                 {
-                                    var task = {|AJ0004:Task.FromResult|}( (IEnumerable<int>) (List<int>) Enumerable.Range(0, 10).ToList() );
+                                    var task = {|SI0004:Task.FromResult|}( (IEnumerable<int>) (List<int>) Enumerable.Range(0, 10).ToList() );
                                 }
                             }
                             """;
@@ -45,7 +45,7 @@ public sealed class TaskCreationWithMaterializedCollectionAsEnumerableAnalyzerTe
                             {
                                 public void TestMethod()
                                 {
-                                    var task = {|AJ0004:ValueTask.FromResult|}( (IEnumerable<int>) (List<int>) Enumerable.Range(0, 10).ToList() );
+                                    var task = {|SI0004:ValueTask.FromResult|}( (IEnumerable<int>) (List<int>) Enumerable.Range(0, 10).ToList() );
                                 }
                             }
                             """;
@@ -93,7 +93,7 @@ public sealed class TaskCreationWithMaterializedCollectionAsEnumerableAnalyzerTe
               {
                   public void TestMethod()
                   {
-                      var task = {|AJ0004:ValueTask.FromResult|}( (IEnumerable<int>) (List<int>) Enumerable.Range(0, 10).ToList() ); // returning materialized collection as IEnumerable is not ok
+                      var task = {|SI0004:ValueTask.FromResult|}( (IEnumerable<int>) (List<int>) Enumerable.Range(0, 10).ToList() ); // returning materialized collection as IEnumerable is not ok
                   }
               }
               """
@@ -120,7 +120,7 @@ public sealed class TaskCreationWithMaterializedCollectionAsEnumerableAnalyzerTe
     private Task RunTestAsync(string code, bool isEnabled)
         => CreateTesterBuilder()
           .WithTestCode(code)
-          .SetEnabled(isEnabled, "AJ0004")
+          .SetEnabled(isEnabled, "SI0004")
           .Build()
           .RunAsync();
 }

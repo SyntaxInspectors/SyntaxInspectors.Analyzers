@@ -1,4 +1,4 @@
-namespace AcidJunkie.Analyzers.Configuration;
+namespace SyntaxInspectors.Analyzers.Configuration;
 
 public static class GenericConfigurationKeyNames
 {

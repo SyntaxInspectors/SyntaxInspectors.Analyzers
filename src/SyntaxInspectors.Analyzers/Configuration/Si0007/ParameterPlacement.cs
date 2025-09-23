@@ -1,4 +1,4 @@
-namespace AcidJunkie.Analyzers.Configuration.Aj0007;
+namespace SyntaxInspectors.Analyzers.Configuration.Aj0007;
 
 internal enum ParameterPlacement
 {

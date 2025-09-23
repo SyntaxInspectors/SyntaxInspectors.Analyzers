@@ -1,5 +1,5 @@
 using System.Collections.Immutable;
-using AcidJunkie.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Testing;
@@ -8,7 +8,7 @@ using Microsoft.CodeAnalysis.Testing;
 using Microsoft.CodeAnalysis.Text;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Helpers;
+namespace SyntaxInspectors.Analyzers.Tests.Helpers;
 
 internal static class CSharpAnalyzerTestBuilder
 {

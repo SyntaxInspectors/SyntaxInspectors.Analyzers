@@ -1,13 +1,13 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Logging;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.WarningSuppression;
+namespace SyntaxInspectors.Analyzers.Diagnosers.WarningSuppression;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class GeneralWarningSuppressionAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<GeneralWarningSuppressionAnalyzerImplementation>
@@ -44,7 +44,7 @@ internal sealed class GeneralWarningSuppressionAnalyzerImplementation : SyntaxNo
         internal static class Default
         {
             private const string Category = "Code Smell";
-            public const string DiagnosticId = "AJ0005";
+            public const string DiagnosticId = "SI0005";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Do not use general warning suppression";
             public static readonly LocalizableString MessageFormat = Title;

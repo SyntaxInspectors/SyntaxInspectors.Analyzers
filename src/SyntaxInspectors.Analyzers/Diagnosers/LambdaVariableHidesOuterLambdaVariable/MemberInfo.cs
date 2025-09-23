@@ -1,4 +1,4 @@
-namespace AcidJunkie.Analyzers.Diagnosers.LambdaVariableHidesOuterLambdaVariable;
+namespace SyntaxInspectors.Analyzers.Diagnosers.LambdaVariableHidesOuterLambdaVariable;
 
 internal sealed class MemberInfo
 {

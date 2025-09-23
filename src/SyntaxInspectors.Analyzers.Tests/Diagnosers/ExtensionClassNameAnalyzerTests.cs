@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.ExtensionClassName;
+using SyntaxInspectors.Analyzers.Diagnosers.ExtensionClassName;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
 public sealed class ExtensionClassNameAnalyzerTests(ITestOutputHelper testOutputHelper)
@@ -27,7 +27,7 @@ public sealed class ExtensionClassNameAnalyzerTests(ITestOutputHelper testOutput
     public Task WithExtensionMethods_WhenClassNameHasNoExtensionsSuffix_ThenDiagnose()
     {
         const string code = """
-                            public static class {|AJ0006:My|}
+                            public static class {|SI0006:My|}
                             {
                                 public static void DoSomething(this string input)
                                 {
@@ -54,7 +54,7 @@ public sealed class ExtensionClassNameAnalyzerTests(ITestOutputHelper testOutput
     }
 
     [Theory]
-    [InlineData(true, "{|AJ0006:My|}")]
+    [InlineData(true, "{|SI0006:My|}")]
     [InlineData(false, "My")]
     public Task Theory_IsEnabled(bool isEnabled, string className)
     {
@@ -76,7 +76,7 @@ public sealed class ExtensionClassNameAnalyzerTests(ITestOutputHelper testOutput
     private Task ValidateAsync(string code, bool isEnabled)
         => CreateTesterBuilder()
           .WithTestCode(code)
-          .SetEnabled(isEnabled, "AJ0006")
+          .SetEnabled(isEnabled, "SI0006")
           .Build()
           .RunAsync();
 }

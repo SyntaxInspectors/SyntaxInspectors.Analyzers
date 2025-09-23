@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.MissingEqualityComparer;
+using SyntaxInspectors.Analyzers.Diagnosers.MissingEqualityComparer;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S4144:Methods should not have identical implementations", Justification = "Splitted up the test into different methods for different categories")]
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
@@ -14,152 +14,152 @@ public sealed class MissingEqualityComparerAnalyzerTests(ITestOutputHelper testO
     // Enumerable.Contains() for RefType
     //
     [InlineData("/* 0000 */  refTypeCollection.Contains( new(), refTypeEqualityComparer );")]
-    [InlineData("/* 0001 */  refTypeCollection.{|AJ0001:Contains|}( new() );")]
+    [InlineData("/* 0001 */  refTypeCollection.{|SI0001:Contains|}( new() );")]
     //
     // Enumerable.Distinct() for RefType
     //
     [InlineData("/* 0002 */  refTypeCollection.Distinct( refTypeEqualityComparer );")]
-    [InlineData("/* 0003 */  refTypeCollection.{|AJ0001:Distinct|}();")]
+    [InlineData("/* 0003 */  refTypeCollection.{|SI0001:Distinct|}();")]
     //
     // Enumerable.DistinctBy() for RefType
     //
     [InlineData("/* 0004 */  refTypeCollection.DistinctBy( a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0005 */  refTypeCollection.{|AJ0001:DistinctBy|}( a => a );")]
+    [InlineData("/* 0005 */  refTypeCollection.{|SI0001:DistinctBy|}( a => a );")]
     //
     // Enumerable.Except() for RefType
     //
     [InlineData("/* 0006 */  refTypeCollection.Except( [], refTypeEqualityComparer );")]
-    [InlineData("/* 0007 */  refTypeCollection.{|AJ0001:Except|}( [] );")]
+    [InlineData("/* 0007 */  refTypeCollection.{|SI0001:Except|}( [] );")]
     //
     // Enumerable.ExceptBy() for RefType
     //
     [InlineData("/* 0008 */  refTypeCollection.ExceptBy( [], a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0009 */  refTypeCollection.{|AJ0001:ExceptBy|}( [], a => a );")]
+    [InlineData("/* 0009 */  refTypeCollection.{|SI0001:ExceptBy|}( [], a => a );")]
     //
     // Enumerable.GroupBy() for RefType
     //
     [InlineData("/* 0010 */  refTypeCollection.GroupBy( a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0011 */  refTypeCollection.{|AJ0001:GroupBy|}( a => a);")]
+    [InlineData("/* 0011 */  refTypeCollection.{|SI0001:GroupBy|}( a => a);")]
     //
     // Enumerable.GroupJoin() for RefType
     //
     [InlineData("/* 0012 */  refTypeCollection.GroupJoin( new RefType[0], a => a, a => a, (a,b) => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0013 */  refTypeCollection.{|AJ0001:GroupJoin|}( new RefType[0], a => a, a => a, (a,b) => a );")]
+    [InlineData("/* 0013 */  refTypeCollection.{|SI0001:GroupJoin|}( new RefType[0], a => a, a => a, (a,b) => a );")]
     //
     // Enumerable.Intersect() for RefType
     //
     [InlineData("/* 0014 */  refTypeCollection.Intersect( [], refTypeEqualityComparer );")]
-    [InlineData("/* 0015 */  refTypeCollection.{|AJ0001:Intersect|}( [] );")]
+    [InlineData("/* 0015 */  refTypeCollection.{|SI0001:Intersect|}( [] );")]
     //
     // Enumerable.IntersectBy() for RefType
     //
     [InlineData("/* 0016 */  refTypeCollection.IntersectBy( [], a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0017 */  refTypeCollection.{|AJ0001:IntersectBy|}( [], a => a );")]
+    [InlineData("/* 0017 */  refTypeCollection.{|SI0001:IntersectBy|}( [], a => a );")]
     //
     // Enumerable.Join() for RefType
     //
     [InlineData("/* 0018 */  refTypeCollection.Join( new RefType[0], a => a, a => a, (a,b) => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0019 */  refTypeCollection.{|AJ0001:Join|}( new RefType[0], a => a, a => a, (a,b) => a );")]
+    [InlineData("/* 0019 */  refTypeCollection.{|SI0001:Join|}( new RefType[0], a => a, a => a, (a,b) => a );")]
     //
     // Enumerable.SequenceEqual() for RefType
     //
     [InlineData("/* 0020 */  refTypeCollection.SequenceEqual( [], refTypeEqualityComparer );")]
-    [InlineData("/* 0021 */  refTypeCollection.{|AJ0001:SequenceEqual|}( [] );")]
+    [InlineData("/* 0021 */  refTypeCollection.{|SI0001:SequenceEqual|}( [] );")]
     //
     // Enumerable.ToDictionary() for RefType
     //
     [InlineData("/* 0022 */  refTypeCollection.ToDictionary( a => a, a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0023 */  refTypeCollection.{|AJ0001:ToDictionary|}( a => a, a => a );")]
+    [InlineData("/* 0023 */  refTypeCollection.{|SI0001:ToDictionary|}( a => a, a => a );")]
     //
     // Enumerable.ToHashSet() for RefType
     //
     [InlineData("/* 0024 */  refTypeCollection.ToHashSet( refTypeEqualityComparer );")]
-    [InlineData("/* 0025 */  refTypeCollection.{|AJ0001:ToHashSet|}();")]
+    [InlineData("/* 0025 */  refTypeCollection.{|SI0001:ToHashSet|}();")]
     //
     // Enumerable.ToDictionary() for RefType
     //
     [InlineData("/* 0026 */  refTypeCollection.ToLookup( a => a, a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0027 */  refTypeCollection.{|AJ0001:ToLookup|}( a => a, a => a );")]
+    [InlineData("/* 0027 */  refTypeCollection.{|SI0001:ToLookup|}( a => a, a => a );")]
     //
     // Enumerable.Union() for RefType
     //
     [InlineData("/* 0028 */  refTypeCollection.Union( [], refTypeEqualityComparer );")]
-    [InlineData("/* 0029 */  refTypeCollection.{|AJ0001:Union|}( [] );")]
+    [InlineData("/* 0029 */  refTypeCollection.{|SI0001:Union|}( [] );")]
     //
     // Enumerable.UnionBy() for RefType
     //
     [InlineData("/* 0030 */  refTypeCollection.UnionBy( [], a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0031 */  refTypeCollection.{|AJ0001:UnionBy|}( [], a => a );")]
+    [InlineData("/* 0031 */  refTypeCollection.{|SI0001:UnionBy|}( [], a => a );")]
     //
     // ImmutableDictionary.Create() method for RefType
     //
     [InlineData("/* 0100 */  ImmutableDictionary.Create<RefType,int>(refTypeEqualityComparer);")]
-    [InlineData("/* 0101 */  ImmutableDictionary.{|AJ0001:Create<RefType,int>|}();")]
+    [InlineData("/* 0101 */  ImmutableDictionary.{|SI0001:Create<RefType,int>|}();")]
     //
     // ImmutableDictionary.CreateRange() method for RefType
     //
     [InlineData("/* 0102 */  ImmutableDictionary.CreateRange<RefType,int>( refTypeEqualityComparer, [] );")]
-    [InlineData("/* 0103 */  ImmutableDictionary.{|AJ0001:CreateRange<RefType,int>|}( [] );")]
+    [InlineData("/* 0103 */  ImmutableDictionary.{|SI0001:CreateRange<RefType,int>|}( [] );")]
     //
     // ImmutableDictionary.CreateBuilder() method for RefType
     //
     [InlineData("/* 0104 */  ImmutableDictionary.CreateBuilder<RefType,int>( refTypeEqualityComparer );")]
-    [InlineData("/* 0105 */  ImmutableDictionary.{|AJ0001:CreateBuilder<RefType,int>|}( );")]
+    [InlineData("/* 0105 */  ImmutableDictionary.{|SI0001:CreateBuilder<RefType,int>|}( );")]
     //
     // ImmutableDictionary.ToImmutableDictionary() for RefType
     //
     [InlineData("/* 0106 */  refTypeCollection.ToImmutableDictionary( a => a, a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0107 */  refTypeCollection.{|AJ0001:ToImmutableDictionary|}( a => a, a => a );")]
+    [InlineData("/* 0107 */  refTypeCollection.{|SI0001:ToImmutableDictionary|}( a => a, a => a );")]
     //
     // ImmutableHashSet.Create() method for RefType
     //
     [InlineData("/* 0108 */  ImmutableHashSet.Create<RefType>(refTypeEqualityComparer);")]
-    [InlineData("/* 0109 */  ImmutableHashSet.{|AJ0001:Create<RefType>|}();")]
+    [InlineData("/* 0109 */  ImmutableHashSet.{|SI0001:Create<RefType>|}();")]
     //
     // ImmutableHashSet.CreateRange() method for RefType
     //
     [InlineData("/* 0110 */  ImmutableHashSet.CreateRange<RefType>( refTypeEqualityComparer, [] );")]
-    [InlineData("/* 0111 */  ImmutableHashSet.{|AJ0001:CreateRange<RefType>|}( [] );")]
+    [InlineData("/* 0111 */  ImmutableHashSet.{|SI0001:CreateRange<RefType>|}( [] );")]
     //
     // ImmutableHashSet.CreateBuilder() method for RefType
     //
     [InlineData("/* 0112 */  ImmutableHashSet.CreateBuilder<RefType>( refTypeEqualityComparer );")]
-    [InlineData("/* 0113 */  ImmutableHashSet.{|AJ0001:CreateBuilder<RefType>|}( );")]
+    [InlineData("/* 0113 */  ImmutableHashSet.{|SI0001:CreateBuilder<RefType>|}( );")]
     //
     // ImmutableHashSet.ToImmutableHashSet() for RefType
     //
     [InlineData("/* 0114 */  refTypeCollection.ToImmutableHashSet( refTypeEqualityComparer );")]
-    [InlineData("/* 0115 */  refTypeCollection.{|AJ0001:ToImmutableHashSet|}( );")]
+    [InlineData("/* 0115 */  refTypeCollection.{|SI0001:ToImmutableHashSet|}( );")]
     //
     // FrozenDictionary.ToFrozenDictionary() for RefType
     //
     [InlineData("/* 0200 */  refTypeCollection.ToFrozenDictionary( a => a, a => a, refTypeEqualityComparer );")]
-    [InlineData("/* 0201 */  refTypeCollection.{|AJ0001:ToFrozenDictionary|}( a => a, a => a );")]
+    [InlineData("/* 0201 */  refTypeCollection.{|SI0001:ToFrozenDictionary|}( a => a, a => a );")]
     //
     // FrozenSet.ToFrozenSet() for RefType
     //
     [InlineData("/* 0300 */  refTypeCollection.ToFrozenSet( refTypeEqualityComparer );")]
-    [InlineData("/* 0301 */  refTypeCollection.{|AJ0001:ToFrozenSet|}( );")]
+    [InlineData("/* 0301 */  refTypeCollection.{|SI0001:ToFrozenSet|}( );")]
     public Task Theory_Various_Method_Invocations(string insertionCode) => RunTestAsync(insertionCode, true);
 
     [Theory]
     [InlineData("/* 1000 */  new Dictionary<RefType,int>( refTypeEqualityComparer );")]
-    [InlineData("/* 1001 */  {|AJ0001:new Dictionary<RefType,int>|}();")]
-    [InlineData("/* 1002 */  Dictionary<RefType,int> dict = {|AJ0001:new|} ( );")] // implicit creation
-    [InlineData("/* 1003 */  Dictionary<RefType,int> dict; dict = {|AJ0001:new|} ( );")] // implicit creation
+    [InlineData("/* 1001 */  {|SI0001:new Dictionary<RefType,int>|}();")]
+    [InlineData("/* 1002 */  Dictionary<RefType,int> dict = {|SI0001:new|} ( );")] // implicit creation
+    [InlineData("/* 1003 */  Dictionary<RefType,int> dict; dict = {|SI0001:new|} ( );")] // implicit creation
     [InlineData("/* 1004 */  Dictionary<RefType,int> dict = new ( refTypeEqualityComparer );")] // implicit creation
     [InlineData("/* 1005 */  Dictionary<RefType,int> dict; dict = new ( refTypeEqualityComparer );")] // implicit creation
-    [InlineData("/* 1006 */  Dictionary<RefType,int> dict = {|AJ0001:[]|};")] // object initializer
-    [InlineData("/* 1007 */  Dictionary<RefType,int> dict; dict = {|AJ0001:[]|};")] // object initializer
+    [InlineData("/* 1006 */  Dictionary<RefType,int> dict = {|SI0001:[]|};")] // object initializer
+    [InlineData("/* 1007 */  Dictionary<RefType,int> dict; dict = {|SI0001:[]|};")] // object initializer
     // TODO: In .NET 9.0, System.Collections.Specialized.OrderedDictionary was added but it doesn't work. Dunno why yet...
     //[InlineData("/* 1010 */  new OrderedDictionary<RefType,int>( refTypeEqualityComparer );")]
-    //[InlineData("/* 1011 */  {|AJ0001:new OrderedDictionary<RefType,int>|}();")]
-    //[InlineData("/* 1012 */  OrderedDictionary<RefType,int> dict = {|AJ0001:new|} ( );")] // implicit creation
-    //[InlineData("/* 1013 */  OrderedDictionary<RefType,int> dict; dict = {|AJ0001:new|} ( );")] // implicit creation
+    //[InlineData("/* 1011 */  {|SI0001:new OrderedDictionary<RefType,int>|}();")]
+    //[InlineData("/* 1012 */  OrderedDictionary<RefType,int> dict = {|SI0001:new|} ( );")] // implicit creation
+    //[InlineData("/* 1013 */  OrderedDictionary<RefType,int> dict; dict = {|SI0001:new|} ( );")] // implicit creation
     //[InlineData("/* 1014 */  OrderedDictionary<RefType,int> dict = new ( refTypeEqualityComparer );")] // implicit creation
     //[InlineData("/* 1015 */  OrderedDictionary<RefType,int> dict; dict = new ( refTypeEqualityComparer );")] // implicit creation
-    //[InlineData("/* 1016 */  OrderedDictionary<RefType,int> dict = {|AJ0001:[]|};")] // object initializer
-    //[InlineData("/* 1017 */  OrderedDictionary<RefType,int> dict; dict = {|AJ0001:[]|};")] // object initializer
+    //[InlineData("/* 1016 */  OrderedDictionary<RefType,int> dict = {|SI0001:[]|};")] // object initializer
+    //[InlineData("/* 1017 */  OrderedDictionary<RefType,int> dict; dict = {|SI0001:[]|};")] // object initializer
     public Task Theory_DictionaryCreation(string insertionCode) => RunTestAsync(insertionCode, true);
 
     [Theory]
@@ -171,7 +171,7 @@ public sealed class MissingEqualityComparerAnalyzerTests(ITestOutputHelper testO
                 static IEqualityComparer<RefType> GetRefTypeEqualityComparer() => null!;
                 refTypeCollection.ToHashSet( GetRefTypeEqualityComparer() );
                 """)] // method
-    [InlineData("/* 9005 */  refTypeCollection.{|AJ0001:ToHashSet|}( null );")] // null reference
+    [InlineData("/* 9005 */  refTypeCollection.{|SI0001:ToHashSet|}( null );")] // null reference
     public Task Theory_CheckVariousWaysOfPassingEqualityComparer(string insertionCode) => RunTestAsync(insertionCode, true);
 
     [Fact]
@@ -187,7 +187,7 @@ public sealed class MissingEqualityComparerAnalyzerTests(ITestOutputHelper testO
     public Task WhenPassingNullEqualityComparer_ThenDiagnose()
     {
         // value types perform structural comparison by default -> no equality comparer required
-        const string insertionCode = "refTypeCollection.{|AJ0001:ToHashSet|}( );";
+        const string insertionCode = "refTypeCollection.{|SI0001:ToHashSet|}( );";
 
         return RunTestAsync(insertionCode, true);
     }
@@ -205,7 +205,7 @@ public sealed class MissingEqualityComparerAnalyzerTests(ITestOutputHelper testO
     public Task WhenPartialEquatableRefType_ThenOk()
     {
         // PartialEquatableRefType implements IEquatable<T> but does not override GetHashCode() => equality comparer required
-        const string insertionCode = "partialEquatableRefTypeCollection.{|AJ0001:Distinct|}();";
+        const string insertionCode = "partialEquatableRefTypeCollection.{|SI0001:Distinct|}();";
 
         return RunTestAsync(insertionCode, true);
     }
@@ -215,7 +215,7 @@ public sealed class MissingEqualityComparerAnalyzerTests(ITestOutputHelper testO
     {
         // RefType does not implement IEquatable<T> and does not override GetHashCode() => equality comparer required
 
-        const string insertionCode = "partialEquatableRefTypeCollection.{|AJ0001:Distinct|}();";
+        const string insertionCode = "partialEquatableRefTypeCollection.{|SI0001:Distinct|}();";
 
         return RunTestAsync(insertionCode, true);
     }
@@ -226,7 +226,7 @@ public sealed class MissingEqualityComparerAnalyzerTests(ITestOutputHelper testO
     public async Task Theory_IsEnabled(bool isEnabled)
     {
         var insertionCode = isEnabled
-            ? "refTypeCollection.{|AJ0001:ToDictionary|}( a => a, a => a );"
+            ? "refTypeCollection.{|SI0001:ToDictionary|}( a => a, a => a );"
             : "refTypeCollection.ToDictionary( a => a, a => a );";
 
         await RunTestAsync(insertionCode, isEnabled);
@@ -344,7 +344,7 @@ public sealed class MissingEqualityComparerAnalyzerTests(ITestOutputHelper testO
 
         return CreateTesterBuilder()
               .WithTestCode(code)
-              .SetEnabled(isEnabled, "AJ0001")
+              .SetEnabled(isEnabled, "SI0001")
               .Build()
               .RunAsync();
     }

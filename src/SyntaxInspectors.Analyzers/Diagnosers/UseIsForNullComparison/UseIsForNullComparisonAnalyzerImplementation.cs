@@ -2,15 +2,15 @@
 
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Extensions;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.UseIsForNullComparison;
+namespace SyntaxInspectors.Analyzers.Diagnosers.UseIsForNullComparison;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class UseIsForNullComparisonAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<UseIsForNullComparisonAnalyzer>
@@ -85,7 +85,7 @@ internal sealed class UseIsForNullComparisonAnalyzerImplementation : SyntaxNodeA
         internal static class Default
         {
             private const string Category = "Intention";
-            public const string DiagnosticId = "AJ0011";
+            public const string DiagnosticId = "SI0011";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Use `is` or `is not` for null-comparison";
             public static readonly LocalizableString MessageFormat = "Use `{0}` to compare for `{1}` instead of `{2}`";

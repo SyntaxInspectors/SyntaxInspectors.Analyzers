@@ -20,8 +20,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AcidJunkie.Analyzers.CodeFixers\AcidJunkie.Analyzers.CodeFixers.csproj"/>
-        <ProjectReference Include="..\AcidJunkie.Analyzers\AcidJunkie.Analyzers.csproj"/>
+        <ProjectReference Include="..\SyntaxInspectors.Analyzers.CodeFixers\SyntaxInspectors.Analyzers.CodeFixers.csproj"/>
+        <ProjectReference Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

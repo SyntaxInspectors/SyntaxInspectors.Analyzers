@@ -1,20 +1,20 @@
 using System.Collections.Immutable;
 using System.Composition;
-using AcidJunkie.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace AcidJunkie.Analyzers.CodeFixers;
+namespace SyntaxInspectors.Analyzers.CodeFixers;
 
 [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(UseIsForNullComparisonFixProvider))]
 [Shared]
 public class UseIsForNullComparisonFixProvider : CodeFixProvider
 {
     public sealed override ImmutableArray<string> FixableDiagnosticIds =>
-        ImmutableArray.Create("AJ0011");
+        ImmutableArray.Create("SI0011");
 
     public sealed override FixAllProvider GetFixAllProvider() =>
         WellKnownFixAllProviders.BatchFixer;

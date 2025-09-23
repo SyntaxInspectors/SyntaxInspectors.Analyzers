@@ -1,7 +1,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
-namespace AcidJunkie.Analyzers.Tests;
+namespace SyntaxInspectors.Analyzers.Tests;
 
 internal sealed class Walker : CSharpSyntaxWalker
 {

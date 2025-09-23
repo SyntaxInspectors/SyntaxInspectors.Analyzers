@@ -1,15 +1,15 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Extensions;
-using AcidJunkie.Analyzers.Logging;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.TaskCreationWithMaterializedCollectionAsEnumerable;
+namespace SyntaxInspectors.Analyzers.Diagnosers.TaskCreationWithMaterializedCollectionAsEnumerable;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class TaskCreationWithMaterializedCollectionAsEnumerableAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<TaskCreationWithMaterializedCollectionAsEnumerableAnalyzerImplementation>
@@ -128,7 +128,7 @@ internal sealed class TaskCreationWithMaterializedCollectionAsEnumerableAnalyzer
         internal static class Default
         {
             private const string Category = "Performance";
-            public const string DiagnosticId = "AJ0004";
+            public const string DiagnosticId = "SI0004";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Do not create tasks of enumerable type containing a materialized collection";
             public static readonly LocalizableString MessageFormat = "Do not create tasks of type IEnumerable or IEnumerable<T> containing a materialized collection";

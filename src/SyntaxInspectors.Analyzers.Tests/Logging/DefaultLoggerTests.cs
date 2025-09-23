@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Logging;
 using FluentAssertions;
 
-namespace AcidJunkie.Analyzers.Tests.Logging;
+namespace SyntaxInspectors.Analyzers.Tests.Logging;
 
 public sealed class DefaultLoggerTests
 {

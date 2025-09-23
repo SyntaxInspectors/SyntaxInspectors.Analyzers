@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Logging;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Extensions;
+namespace SyntaxInspectors.Analyzers.Extensions;
 
 internal static class SyntaxNodeAnalysisContextExtensions
 {

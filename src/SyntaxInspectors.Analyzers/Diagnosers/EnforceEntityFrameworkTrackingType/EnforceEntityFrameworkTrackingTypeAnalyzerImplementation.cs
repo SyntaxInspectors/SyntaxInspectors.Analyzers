@@ -1,14 +1,14 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Extensions;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using EntityTypesByNamespaceName = System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Microsoft.CodeAnalysis.INamedTypeSymbol>>;
 
-namespace AcidJunkie.Analyzers.Diagnosers.EnforceEntityFrameworkTrackingType;
+namespace SyntaxInspectors.Analyzers.Diagnosers.EnforceEntityFrameworkTrackingType;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class EnforceEntityFrameworkTrackingTypeAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<EnforceEntityFrameworkTrackingTypeAnalyzer>
@@ -247,7 +247,7 @@ internal sealed class EnforceEntityFrameworkTrackingTypeAnalyzerImplementation :
         internal static class Default
         {
             private const string Category = "Intention";
-            public const string DiagnosticId = "AJ0002";
+            public const string DiagnosticId = "SI0002";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Specify the Entity Framework tracking type";
             public static readonly LocalizableString MessageFormat = "Specify `AsTracking` or `AsNoTracking` when obtaining entities from entity framework";

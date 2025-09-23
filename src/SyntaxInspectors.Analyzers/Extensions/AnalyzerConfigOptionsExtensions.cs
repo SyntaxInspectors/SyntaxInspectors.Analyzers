@@ -1,8 +1,8 @@
 using System.Collections.Immutable;
-using AcidJunkie.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Configuration;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Extensions;
+namespace SyntaxInspectors.Analyzers.Extensions;
 
 public static class AnalyzerConfigOptionsExtensions
 {

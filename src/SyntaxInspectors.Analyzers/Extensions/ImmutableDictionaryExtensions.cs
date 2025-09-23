@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 
-namespace AcidJunkie.Analyzers.Extensions;
+namespace SyntaxInspectors.Analyzers.Extensions;
 
 public static class ImmutableDictionaryExtensions
 {

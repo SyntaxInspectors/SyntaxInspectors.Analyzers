@@ -1,7 +1,6 @@
 ﻿<Solution>
   <Folder Name="/1. Solution Items/">
     <File Path="..\README.md" />
-    <File Path="..\STATUS.md" />
     <File Path=".editorconfig" />
     <File Path="Directory.Build.props" />
     <File Path="BannedSymbols.txt" />
@@ -9,18 +8,18 @@
     <File Path="Directory.Build.targets" />
   </Folder>
   <Folder Name="/1. Solution Items/Rules/">
-    <File Path="..\docs\Rules\AJ0001.md" />
-    <File Path="..\docs\Rules\AJ0002.md" />
-    <File Path="..\docs\Rules\AJ0003.md" />
-    <File Path="..\docs\Rules\AJ0004.md" />
-    <File Path="..\docs\Rules\AJ0005.md" />
-    <File Path="..\docs\Rules\AJ0006.md" />
-    <File Path="..\docs\Rules\AJ0007.md" />
-    <File Path="..\docs\Rules\AJ0008.md" />
-    <File Path="..\docs\Rules\AJ0009.md" />
-    <File Path="..\docs\Rules\AJ0010.md" />
-    <File Path="..\docs\Rules\AJ9999.md" />
-    <File Path="..\docs\Rules\AJ0011.md" />
+    <File Path="..\docs\Rules\SI0001.md" />
+    <File Path="..\docs\Rules\SI0002.md" />
+    <File Path="..\docs\Rules\SI0003.md" />
+    <File Path="..\docs\Rules\SI0004.md" />
+    <File Path="..\docs\Rules\SI0005.md" />
+    <File Path="..\docs\Rules\SI0006.md" />
+    <File Path="..\docs\Rules\SI0007.md" />
+    <File Path="..\docs\Rules\SI0008.md" />
+    <File Path="..\docs\Rules\SI0009.md" />
+    <File Path="..\docs\Rules\SI0010.md" />
+    <File Path="..\docs\Rules\SI9999.md" />
+    <File Path="..\docs\Rules\SI0011.md" />
   </Folder>
   <Folder Name="/2. Analyzers/">
     <Project Path="SyntaxInspectors.Analyzers.CodeFixers\SyntaxInspectors.Analyzers.CodeFixers.csproj" Type="Classic C#" />

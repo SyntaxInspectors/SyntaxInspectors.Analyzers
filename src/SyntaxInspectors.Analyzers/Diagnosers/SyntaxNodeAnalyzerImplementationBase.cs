@@ -1,8 +1,8 @@
-using AcidJunkie.Analyzers.Extensions;
-using AcidJunkie.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Logging;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Diagnosers;
 
 internal abstract class SyntaxNodeAnalyzerImplementationBase<TImplementation>
     where TImplementation : class

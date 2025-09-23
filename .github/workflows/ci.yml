@@ -37,50 +37,50 @@ jobs:
 
       - name: Test
         run: dotnet test --configuration Release --verbosity normal
-        working-directory: ./src/AcidJunkie.Analyzers.Tests/
+        working-directory: ./src/SyntaxInspectors.Analyzers.Tests/
 
       - name: Compile Analyzers and Fixers for Roslyn 4.8
         run: |
-          dotnet build src/AcidJunkie.Analyzers/AcidJunkie.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.8 /p:Version=$ASSEMBLY_VERSION
-          dotnet build src/AcidJunkie.Analyzers.CodeFixers/AcidJunkie.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.8 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.8 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.8 /p:Version=$ASSEMBLY_VERSION
 
       - name: Compile Analyzers and Fixers for Roslyn 4.9.2
         run: |
-          dotnet build src/AcidJunkie.Analyzers/AcidJunkie.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.9.2 /p:Version=$ASSEMBLY_VERSION
-          dotnet build src/AcidJunkie.Analyzers.CodeFixers/AcidJunkie.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.9.2 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.9.2 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.9.2 /p:Version=$ASSEMBLY_VERSION
 
       - name: Compile Analyzers and Fixers for Roslyn 4.10
         run: |
-          dotnet build src/AcidJunkie.Analyzers/AcidJunkie.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.10 /p:Version=$ASSEMBLY_VERSION
-          dotnet build src/AcidJunkie.Analyzers.CodeFixers/AcidJunkie.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.10 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.10 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.10 /p:Version=$ASSEMBLY_VERSION
 
       - name: Compile Analyzers and Fixers for Roslyn 4.11
         run: |
-          dotnet build src/AcidJunkie.Analyzers/AcidJunkie.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.11 /p:Version=$ASSEMBLY_VERSION
-          dotnet build src/AcidJunkie.Analyzers.CodeFixers/AcidJunkie.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.11 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.11 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.11 /p:Version=$ASSEMBLY_VERSION
 
       - name: Compile Analyzers and Fixers for Roslyn 4.12
         run: |
-          dotnet build src/AcidJunkie.Analyzers/AcidJunkie.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.12 /p:Version=$ASSEMBLY_VERSION
-          dotnet build src/AcidJunkie.Analyzers.CodeFixers/AcidJunkie.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.12 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.12 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.12 /p:Version=$ASSEMBLY_VERSION
 
       - name: Compile Analyzers and Fixers for Roslyn 4.13
         run: |
-          dotnet build src/AcidJunkie.Analyzers/AcidJunkie.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.13 /p:Version=$ASSEMBLY_VERSION
-          dotnet build src/AcidJunkie.Analyzers.CodeFixers/AcidJunkie.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.13 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.13 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.13 /p:Version=$ASSEMBLY_VERSION
 
       - name: Compile Analyzers and Fixers for Roslyn 4.14
         run: |
-          dotnet build src/AcidJunkie.Analyzers/AcidJunkie.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.14 /p:Version=$ASSEMBLY_VERSION
-          dotnet build src/AcidJunkie.Analyzers.CodeFixers/AcidJunkie.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.14 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn4.14 /p:Version=$ASSEMBLY_VERSION
+          dotnet build src/SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn4.14 /p:Version=$ASSEMBLY_VERSION
 
       - name: Compile and Pack Analyzers.Pack
         run: |
-          dotnet restore src/AcidJunkie.Analyzers.Pack/AcidJunkie.Analyzers.Pack.csproj
-          dotnet build src/AcidJunkie.Analyzers.Pack/AcidJunkie.Analyzers.Pack.csproj --configuration Release /p:Version=$ASSEMBLY_VERSION
-          dotnet pack src/AcidJunkie.Analyzers.Pack/AcidJunkie.Analyzers.Pack.csproj --configuration Release  /p:Version=$ASSEMBLY_VERSION /p:PackageVersion=$NUGET_VERSION 
+          dotnet restore src/SyntaxInspectors.Analyzers.Pack/SyntaxInspectors.Analyzers.Pack.csproj
+          dotnet build src/SyntaxInspectors.Analyzers.Pack/SyntaxInspectors.Analyzers.Pack.csproj --configuration Release /p:Version=$ASSEMBLY_VERSION
+          dotnet pack src/SyntaxInspectors.Analyzers.Pack/SyntaxInspectors.Analyzers.Pack.csproj --configuration Release  /p:Version=$ASSEMBLY_VERSION /p:PackageVersion=$NUGET_VERSION 
 
       - name: Publish to NuGet
         if: ${{ startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/heads/release-') }}
         run: dotnet nuget push ./**/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
-        working-directory: src/AcidJunkie.Analyzers.Pack
+        working-directory: src/SyntaxInspectors.Analyzers.Pack

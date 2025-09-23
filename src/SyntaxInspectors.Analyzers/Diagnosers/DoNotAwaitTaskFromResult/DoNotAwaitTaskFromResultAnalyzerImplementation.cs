@@ -1,14 +1,14 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Extensions;
-using AcidJunkie.Analyzers.Logging;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.DoNotAwaitTaskFromResult;
+namespace SyntaxInspectors.Analyzers.Diagnosers.DoNotAwaitTaskFromResult;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class DoNotAwaitTaskFromResultAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<DoNotAwaitTaskFromResultAnalyzerImplementation>
@@ -60,7 +60,7 @@ internal sealed class DoNotAwaitTaskFromResultAnalyzerImplementation : SyntaxNod
         internal static class Default
         {
             private const string Category = "Performance";
-            public const string DiagnosticId = "AJ0008";
+            public const string DiagnosticId = "SI0008";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Do not await `Task.FromResult()`";
             public static readonly LocalizableString MessageFormat = "Do not await `Task.FromResult()`";

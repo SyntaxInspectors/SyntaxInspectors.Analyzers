@@ -1,10 +1,10 @@
 using System.Collections.Immutable;
-using AcidJunkie.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.ExtensionClassName;
+namespace SyntaxInspectors.Analyzers.Diagnosers.ExtensionClassName;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class ExtensionClassNameAnalyzer : DiagnosticAnalyzer

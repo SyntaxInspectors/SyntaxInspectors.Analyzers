@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AcidJunkie.Analyzers\AcidJunkie.Analyzers.csproj"
+        <ProjectReference Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj"
                           ReferenceOutputAssembly="false"
                           OutputItemType="Analyzer"
                           SetTargetFramework="TargetFramework=netstandard2.0"/>

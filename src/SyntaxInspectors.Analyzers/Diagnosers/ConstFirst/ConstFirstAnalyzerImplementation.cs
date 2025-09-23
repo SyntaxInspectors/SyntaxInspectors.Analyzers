@@ -1,13 +1,13 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Logging;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.ConstFirst;
+namespace SyntaxInspectors.Analyzers.Diagnosers.ConstFirst;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class ConstFirstAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<ConstFirstAnalyzerImplementation>
@@ -70,7 +70,7 @@ internal sealed class ConstFirstAnalyzerImplementation : SyntaxNodeAnalyzerImple
         internal static class Default
         {
             private const string Category = "Style";
-            public const string DiagnosticId = "AJ0010";
+            public const string DiagnosticId = "SI0010";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Declare constants at the top of the method";
             public static readonly LocalizableString MessageFormat = "Declare constants at the top of the method";

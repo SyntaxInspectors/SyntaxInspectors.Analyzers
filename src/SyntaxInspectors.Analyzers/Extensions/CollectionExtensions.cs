@@ -1,4 +1,4 @@
-namespace AcidJunkie.Analyzers.Extensions;
+namespace SyntaxInspectors.Analyzers.Extensions;
 
 public static class CollectionExtensions
 {

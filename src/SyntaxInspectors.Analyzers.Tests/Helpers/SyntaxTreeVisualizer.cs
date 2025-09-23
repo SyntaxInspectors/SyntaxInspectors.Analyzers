@@ -2,7 +2,7 @@ using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
-namespace AcidJunkie.Analyzers.Tests.Helpers;
+namespace SyntaxInspectors.Analyzers.Tests.Helpers;
 
 internal static class SyntaxTreeVisualizer
 {

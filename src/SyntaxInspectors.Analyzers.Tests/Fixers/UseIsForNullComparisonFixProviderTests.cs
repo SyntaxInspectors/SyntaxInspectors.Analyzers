@@ -1,8 +1,8 @@
-using AcidJunkie.Analyzers.CodeFixers;
-using AcidJunkie.Analyzers.Diagnosers.UseIsForNullComparison;
+using SyntaxInspectors.Analyzers.CodeFixers;
+using SyntaxInspectors.Analyzers.Diagnosers.UseIsForNullComparison;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Fixers;
+namespace SyntaxInspectors.Analyzers.Tests.Fixers;
 
 public sealed class UseIsForNullComparisonFixProviderTests : CodeFixTestBase<UseIsForNullComparisonAnalyzer, UseIsForNullComparisonFixProvider>
 {
@@ -17,7 +17,7 @@ public sealed class UseIsForNullComparisonFixProviderTests : CodeFixTestBase<Use
                             public static class Test
                             {
                                 public static bool IsNull(object? obj)
-                                    => obj {|AJ0011:==|} null;
+                                    => obj {|SI0011:==|} null;
                             }
                             """;
 
@@ -39,7 +39,7 @@ public sealed class UseIsForNullComparisonFixProviderTests : CodeFixTestBase<Use
                             public static class Test
                             {
                                 public static bool IsNotNull(object? obj)
-                                    => obj {|AJ0011:!=|} null;
+                                    => obj {|SI0011:!=|} null;
                             }
                             """;
 

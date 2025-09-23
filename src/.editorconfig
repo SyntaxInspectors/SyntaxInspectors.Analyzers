@@ -913,5 +913,5 @@ ma0051.maximum_statements_per_method = 60
 ma0051.skip_local_functions = true
 
 
-# AJ specific settings
-AcidJunkie_Analyzers.log_level = none
+# SI specific settings
+SyntaxInspectors_Analyzers.log_level = none

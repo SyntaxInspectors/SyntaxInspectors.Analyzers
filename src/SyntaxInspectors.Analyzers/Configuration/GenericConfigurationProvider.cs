@@ -1,7 +1,7 @@
-using AcidJunkie.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Extensions;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Configuration;
+namespace SyntaxInspectors.Analyzers.Configuration;
 
 internal static class GenericConfigurationProvider
 {

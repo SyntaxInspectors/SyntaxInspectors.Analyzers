@@ -1,13 +1,13 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers;
-using AcidJunkie.Analyzers.Logging;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Diagnosers;
+using SyntaxInspectors.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Extensions;
+namespace SyntaxInspectors.Analyzers.Extensions;
 
 internal static class AnalysisContextExtensions
 {

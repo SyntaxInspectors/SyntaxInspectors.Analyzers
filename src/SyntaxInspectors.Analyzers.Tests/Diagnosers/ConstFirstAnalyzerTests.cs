@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.ConstFirst;
+using SyntaxInspectors.Analyzers.Diagnosers.ConstFirst;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
 public sealed class ConstFirstAnalyzerTests(ITestOutputHelper testOutputHelper)
@@ -20,13 +20,13 @@ public sealed class ConstFirstAnalyzerTests(ITestOutputHelper testOutputHelper)
                 """)]
     [InlineData("""
                 string value1 = "tb";
-                {|AJ0010:const string value2 = "303";|}
+                {|SI0010:const string value2 = "303";|}
                 TestMethod();
                 """)]
     [InlineData("""
                 TestMethod();
                 string value1 = "tb";
-                {|AJ0010:const string value2 = "303";|}
+                {|SI0010:const string value2 = "303";|}
                 """)]
     public async Task Theory(string methodContents) => await RunTestAsync(methodContents);
 
@@ -38,7 +38,7 @@ public sealed class ConstFirstAnalyzerTests(ITestOutputHelper testOutputHelper)
     [InlineData(true,
         """
         TestMethod();
-        {|AJ0010:const string value2 = "303";|}
+        {|SI0010:const string value2 = "303";|}
         """)]
     public async Task Theory_IsEnabled(bool isEnabled, string methodContents) => await RunTestAsync(methodContents, isEnabled);
 
@@ -69,7 +69,7 @@ public sealed class ConstFirstAnalyzerTests(ITestOutputHelper testOutputHelper)
 
         await CreateTesterBuilder()
              .WithTestCode(code)
-             .SetEnabled(isEnabled, "AJ0010")
+             .SetEnabled(isEnabled, "SI0010")
              .Build()
              .RunAsync();
     }

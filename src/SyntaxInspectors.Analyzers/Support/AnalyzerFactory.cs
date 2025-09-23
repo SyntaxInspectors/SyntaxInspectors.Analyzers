@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Support;
+namespace SyntaxInspectors.Analyzers.Support;
 
 [SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "Singleton of the factory")]
 public static class AnalyzerFactory<T>

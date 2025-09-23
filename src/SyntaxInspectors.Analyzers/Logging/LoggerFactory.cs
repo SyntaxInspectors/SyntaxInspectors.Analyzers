@@ -1,7 +1,7 @@
-using AcidJunkie.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Configuration;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Logging;
+namespace SyntaxInspectors.Analyzers.Logging;
 
 internal static class LoggerFactory
 {

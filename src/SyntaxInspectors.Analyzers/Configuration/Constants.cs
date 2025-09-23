@@ -1,4 +1,4 @@
-namespace AcidJunkie.Analyzers.Configuration;
+namespace SyntaxInspectors.Analyzers.Configuration;
 
 internal static class Constants
 {

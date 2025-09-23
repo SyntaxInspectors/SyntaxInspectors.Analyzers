@@ -1,9 +1,9 @@
-using AcidJunkie.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace AcidJunkie.Analyzers.Diagnosers.LambdaVariableHidesOuterLambdaVariable;
+namespace SyntaxInspectors.Analyzers.Diagnosers.LambdaVariableHidesOuterLambdaVariable;
 
 internal static class ViolationChecker
 {

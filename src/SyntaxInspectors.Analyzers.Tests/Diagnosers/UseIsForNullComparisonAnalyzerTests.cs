@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.UseIsForNullComparison;
+using SyntaxInspectors.Analyzers.Diagnosers.UseIsForNullComparison;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
 public sealed class UseIsForNullComparisonAnalyzerTests(ITestOutputHelper testOutputHelper)
@@ -13,8 +13,8 @@ public sealed class UseIsForNullComparisonAnalyzerTests(ITestOutputHelper testOu
     [InlineData(@"_ = value != ""a"";")]
     [InlineData("int? a = 303; _ = a == null;")]
     [InlineData("int? a = 303; _ = a != null;")]
-    [InlineData("_ = value {|AJ0011:==|} null;")]
-    [InlineData("_ = value {|AJ0011:!=|} null;")]
+    [InlineData("_ = value {|SI0011:==|} null;")]
+    [InlineData("_ = value {|SI0011:!=|} null;")]
     public Task Theory(string insertionCode)
     {
         var code = $$"""
@@ -52,7 +52,7 @@ public sealed class UseIsForNullComparisonAnalyzerTests(ITestOutputHelper testOu
     }
 
     [Theory]
-    [InlineData(true, "var isNull = value {|AJ0011:==|} null;")]
+    [InlineData(true, "var isNull = value {|SI0011:==|} null;")]
     [InlineData(false, "var isNull = value == null;")]
     public Task Theory_IsEnabled(bool isEnabled, string insertionCode)
     {
@@ -75,7 +75,7 @@ public sealed class UseIsForNullComparisonAnalyzerTests(ITestOutputHelper testOu
     private Task ValidateAsync(string code, bool isEnabled)
         => CreateTesterBuilder()
           .WithTestCode(code)
-          .SetEnabled(isEnabled, "AJ0011")
+          .SetEnabled(isEnabled, "SI0011")
           .Build()
           .RunAsync();
 }

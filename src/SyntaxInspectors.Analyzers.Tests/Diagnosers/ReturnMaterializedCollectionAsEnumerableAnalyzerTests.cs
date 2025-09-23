@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.ReturnMaterializedCollectionAsEnumerable;
+using SyntaxInspectors.Analyzers.Diagnosers.ReturnMaterializedCollectionAsEnumerable;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S4144:Methods should not have identical implementations", Justification = "Splitted up the test into different methods for different categories")]
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
@@ -94,7 +94,7 @@ public sealed class ReturnMaterializedCollectionAsEnumerableAnalyzerTests(ITestO
                             {
                                 public IEnumerable<int> TestMethod()
                                 {
-                                    {|AJ0003:return|} (IEnumerable<int>) Enumerable.Range(0, 10).ToList();
+                                    {|SI0003:return|} (IEnumerable<int>) Enumerable.Range(0, 10).ToList();
                                 }
                             }
                             """;
@@ -116,7 +116,7 @@ public sealed class ReturnMaterializedCollectionAsEnumerableAnalyzerTests(ITestO
                             public class Test
                             {
                                 public IEnumerable<int> TestMethod()
-                                    {|AJ0003:=>|} Enumerable.Range(0, 10).ToList();
+                                    {|SI0003:=>|} Enumerable.Range(0, 10).ToList();
                             }
                             """;
 
@@ -200,7 +200,7 @@ public sealed class ReturnMaterializedCollectionAsEnumerableAnalyzerTests(ITestO
 
               public class Test
               {
-                  public IEnumerable<int> TestMethod() {|AJ0003:=>|} Enumerable.Range(0, 10).ToList(); // returning materialized collection as IEnumerable is not ok
+                  public IEnumerable<int> TestMethod() {|SI0003:=>|} Enumerable.Range(0, 10).ToList(); // returning materialized collection as IEnumerable is not ok
               }
               """
             : """
@@ -223,7 +223,7 @@ public sealed class ReturnMaterializedCollectionAsEnumerableAnalyzerTests(ITestO
     private Task RunTestAsync(string code, bool isEnabled)
         => CreateTesterBuilder()
           .WithTestCode(code)
-          .SetEnabled(isEnabled, "AJ0003")
+          .SetEnabled(isEnabled, "SI0003")
           .Build()
           .RunAsync();
 }

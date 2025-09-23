@@ -1,7 +1,7 @@
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Configuration.Aj0007;
+namespace SyntaxInspectors.Analyzers.Configuration.Si0007;
 
 internal static class ConfigurationProvider
 {

@@ -1,20 +1,20 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.DoNotAwaitTaskFromResult;
+using SyntaxInspectors.Analyzers.Diagnosers.DoNotAwaitTaskFromResult;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
 public sealed class DoNotAwaitTaskFromResultAnalyzerTests(ITestOutputHelper testOutputHelper)
     : TestBase<DoNotAwaitTaskFromResultAnalyzer>(testOutputHelper)
 {
     [Theory]
-    [InlineData("await {|AJ0008:Task.FromResult(303)|};")]
+    [InlineData("await {|SI0008:Task.FromResult(303)|};")]
     [InlineData("await OtherMethod();")]
     public async Task Theory(string insertionCode) => await RunTestAsync(insertionCode);
 
     [Theory]
-    [InlineData(true, "await {|AJ0008:Task.FromResult(303)|};")]
+    [InlineData(true, "await {|SI0008:Task.FromResult(303)|};")]
     [InlineData(false, "await OtherMethod();")]
     public async Task Theory_IsEnabled(bool isEnabled, string methodContents) => await RunTestAsync(methodContents, isEnabled);
 
@@ -50,7 +50,7 @@ public sealed class DoNotAwaitTaskFromResultAnalyzerTests(ITestOutputHelper test
 
         await CreateTesterBuilder()
              .WithTestCode(code)
-             .SetEnabled(isEnabled, "AJ0008")
+             .SetEnabled(isEnabled, "SI0008")
              .Build()
              .RunAsync();
     }

@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Microsoft.CodeAnalysis;
 
-namespace AcidJunkie.Analyzers.Logging;
+namespace SyntaxInspectors.Analyzers.Logging;
 
 [SuppressMessage("MicrosoftCodeAnalysisCorrectness", "RS1035:Do not use APIs banned for analyzers")]
 [SuppressMessage("Major Code Smell", "S6354:Use a testable date/time provider")]

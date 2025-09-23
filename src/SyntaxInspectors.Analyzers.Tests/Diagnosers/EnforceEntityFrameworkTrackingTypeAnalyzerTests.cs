@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.EnforceEntityFrameworkTrackingType;
+using SyntaxInspectors.Analyzers.Diagnosers.EnforceEntityFrameworkTrackingType;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
 public sealed class EnforceEntityFrameworkTrackingTypeAnalyzerTests(ITestOutputHelper testOutputHelper)
@@ -11,7 +11,7 @@ public sealed class EnforceEntityFrameworkTrackingTypeAnalyzerTests(ITestOutputH
     [Theory]
     [InlineData("dbContext.Entities.AsTracking()")]
     [InlineData("dbContext.Entities.AsNoTracking()")]
-    [InlineData("{|AJ0002:dbContext.Entities|}")]
+    [InlineData("{|SI0002:dbContext.Entities|}")]
     public async Task Theory_ReturningEntity(string insertionCode)
     {
         var code = $"""
@@ -38,7 +38,7 @@ public sealed class EnforceEntityFrameworkTrackingTypeAnalyzerTests(ITestOutputH
     {
         const string code = """
                             using var dbContext = new TestContext();
-                            {|AJ0002:dbContext.Entities|}.Select(a=> new { Id = a.Id, Sub = new { MyEntity = a } }).ToList();
+                            {|SI0002:dbContext.Entities|}.Select(a=> new { Id = a.Id, Sub = new { MyEntity = a } }).ToList();
                             """;
 
         await RunTestAsync(code);
@@ -49,7 +49,7 @@ public sealed class EnforceEntityFrameworkTrackingTypeAnalyzerTests(ITestOutputH
     {
         const string code = """
                             using var dbContext = new TestContext();
-                            {|AJ0002:dbContext.Entities|}.ToDictionary(a => a.Id, a => a);
+                            {|SI0002:dbContext.Entities|}.ToDictionary(a => a.Id, a => a);
                             """;
 
         await RunTestAsync(code);
@@ -67,7 +67,7 @@ public sealed class EnforceEntityFrameworkTrackingTypeAnalyzerTests(ITestOutputH
     }
 
     [Theory]
-    [InlineData(true, "{|AJ0002:dbContext.Entities|}")]
+    [InlineData(true, "{|SI0002:dbContext.Entities|}")]
     [InlineData(false, "dbContext.Entities")]
     public async Task Theory_IsEnabled(bool isEnabled, string entityPart)
     {
@@ -90,7 +90,7 @@ public sealed class EnforceEntityFrameworkTrackingTypeAnalyzerTests(ITestOutputH
     [InlineData("dbContext.Entities.RemoveRange(entity)")]
     [InlineData("dbContext.Entities.Update(entity)")]
     [InlineData("dbContext.Entities.UpdateRange(entity)")]
-    [InlineData("{|AJ0002:dbContext.Entities|}.Where(a=> true)")]
+    [InlineData("{|SI0002:dbContext.Entities|}.Where(a=> true)")]
     public async Task WithoutTrackingType_WhenIgnoredMethodIsCalled_ThenOk(string part)
     {
         var code = $$"""
@@ -157,7 +157,7 @@ public sealed class EnforceEntityFrameworkTrackingTypeAnalyzerTests(ITestOutputH
 
         await CreateTesterBuilder()
              .WithTestCode(code)
-             .SetEnabled(isEnabled, "AJ0002")
+             .SetEnabled(isEnabled, "SI0002")
              .WithNugetPackage("Microsoft.EntityFrameworkCore", "9.0.8")
              .Build()
              .RunAsync();

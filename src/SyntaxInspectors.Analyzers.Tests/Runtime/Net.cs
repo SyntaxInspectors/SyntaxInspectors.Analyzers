@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis.Testing;
 
-namespace AcidJunkie.Analyzers.Tests.Runtime;
+namespace SyntaxInspectors.Analyzers.Tests.Runtime;
 
 internal static class Net
 {

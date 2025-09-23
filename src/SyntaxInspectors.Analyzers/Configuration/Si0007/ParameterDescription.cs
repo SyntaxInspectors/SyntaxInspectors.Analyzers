@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace AcidJunkie.Analyzers.Configuration.Aj0007;
+namespace SyntaxInspectors.Analyzers.Configuration.Si0007;
 
 public sealed class ParameterDescription
 {

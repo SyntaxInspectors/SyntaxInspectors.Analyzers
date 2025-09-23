@@ -8,8 +8,8 @@
         <PackageId>Dummy-CodeFixer</PackageId>
         <GenerateDependencyFile>false</GenerateDependencyFile>
         <developmentDependency>true</developmentDependency>
-        <Description>AcidJunkie Analyzers</Description>
-        <PackageTags>AcidJunkie.Analyzers, analyzers</PackageTags>
+        <Description>SyntaxInspectors Analyzers</Description>
+        <PackageTags>SyntaxInspectors.Analyzers, analyzers</PackageTags>
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <BaseOutputPath>bin\$(RoslynVersion)\</BaseOutputPath>
         <NoWarn>$(NoWarn);RS1026;RS2007</NoWarn>
@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AcidJunkie.Analyzers\AcidJunkie.Analyzers.csproj"/>
+        <ProjectReference Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj"/>
     </ItemGroup>
 
 </Project>

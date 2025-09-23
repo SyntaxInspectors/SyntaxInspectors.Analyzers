@@ -1,15 +1,15 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Extensions;
-using AcidJunkie.Analyzers.Logging;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.MissingEqualityComparer;
+namespace SyntaxInspectors.Analyzers.Diagnosers.MissingEqualityComparer;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class MissingEqualityComparerAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<MissingEqualityComparerAnalyzerImplementation>
@@ -252,7 +252,7 @@ internal sealed class MissingEqualityComparerAnalyzerImplementation : SyntaxNode
         internal static class Default
         {
             private const string Category = "Predictability";
-            public const string DiagnosticId = "AJ0001";
+            public const string DiagnosticId = "SI0001";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Provide an equality comparer argument";
             public static readonly LocalizableString MessageFormat = "To prevent unexpected results, use a IEqualityComparer argument because the type used for hash-matching does not fully implement IEquatable<T> together with GetHashCode()";

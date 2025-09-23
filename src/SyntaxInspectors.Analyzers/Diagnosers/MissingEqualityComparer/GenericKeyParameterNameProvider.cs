@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
-using AcidJunkie.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Extensions;
 
-namespace AcidJunkie.Analyzers.Diagnosers.MissingEqualityComparer;
+namespace SyntaxInspectors.Analyzers.Diagnosers.MissingEqualityComparer;
 
 internal static class GenericKeyParameterNameProvider
 {

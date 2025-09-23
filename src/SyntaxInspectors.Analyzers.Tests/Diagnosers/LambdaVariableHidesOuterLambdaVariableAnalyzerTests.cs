@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Diagnosers.LambdaVariableHidesOuterLambdaVariable;
+using SyntaxInspectors.Analyzers.Diagnosers.LambdaVariableHidesOuterLambdaVariable;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
 public sealed class LambdaVariableHidesOuterLambdaVariableAnalyzerTests(ITestOutputHelper testOutputHelper)
@@ -11,16 +11,16 @@ public sealed class LambdaVariableHidesOuterLambdaVariableAnalyzerTests(ITestOut
     [Theory]
     [InlineData("/* 01 */ Enumerable.Range(0,10).Where(x => true).Where(x => true);")]
     [InlineData("/* 02 */ Enumerable.Range(0,10).Where(x => true).Select( (i,x) => true);")]
-    [InlineData("/* 03 */ new[] {string.Empty}.Select(x => x.Select({|AJ0009:x|} => x));")]
-    [InlineData("/* 04 */ new[] {string.Empty}.Select((x,i) => x.Select(({|AJ0009:x|},{|AJ0009:i|}) => x));")]
-    [InlineData("/* 05 */ new[] {string.Empty}.Select((x,i) => x.Select({|AJ0009:x|} =>x));")]
-    [InlineData("/* 06 */ new[] {string.Empty}.Select((x,i) => x.Select((_,{|AJ0009:i|}) => i));")]
+    [InlineData("/* 03 */ new[] {string.Empty}.Select(x => x.Select({|SI0009:x|} => x));")]
+    [InlineData("/* 04 */ new[] {string.Empty}.Select((x,i) => x.Select(({|SI0009:x|},{|SI0009:i|}) => x));")]
+    [InlineData("/* 05 */ new[] {string.Empty}.Select((x,i) => x.Select({|SI0009:x|} =>x));")]
+    [InlineData("/* 06 */ new[] {string.Empty}.Select((x,i) => x.Select((_,{|SI0009:i|}) => i));")]
     [InlineData("/* 07 */ new[] {string.Empty}.Select((x,_) => x.Select((y,_) => x));")]
     public async Task Theory(string insertionCode)
         => await ValidateAsync(insertionCode);
 
     [Theory]
-    [InlineData(true, "new[] {string.Empty}.Select(x => x.Select({|AJ0009:x|} => x));")]
+    [InlineData(true, "new[] {string.Empty}.Select(x => x.Select({|SI0009:x|} => x));")]
     [InlineData(false, "new[] {string.Empty}.Select(x => x.Select(x => x));")]
     public Task Theory_IsEnabled(bool isEnabled, string insertionCode)
         => ValidateAsync(insertionCode, isEnabled);
@@ -49,7 +49,7 @@ public sealed class LambdaVariableHidesOuterLambdaVariableAnalyzerTests(ITestOut
     {
         await CreateTesterBuilder()
              .WithTestCode(CreateTestCode(insertionCode))
-             .SetEnabled(isEnabled, "AJ0009")
+             .SetEnabled(isEnabled, "SI0009")
              .Build()
              .RunAsync();
     }

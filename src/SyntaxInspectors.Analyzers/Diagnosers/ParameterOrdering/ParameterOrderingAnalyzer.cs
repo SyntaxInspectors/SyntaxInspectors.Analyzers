@@ -1,10 +1,10 @@
 using System.Collections.Immutable;
-using AcidJunkie.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.ParameterOrdering;
+namespace SyntaxInspectors.Analyzers.Diagnosers.ParameterOrdering;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class ParameterOrderingAnalyzer : DiagnosticAnalyzer

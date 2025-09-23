@@ -1,11 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration.Aj0007;
-using AcidJunkie.Analyzers.Diagnosers.ParameterOrdering;
+using SyntaxInspectors.Analyzers.Diagnosers.ParameterOrdering;
 using Microsoft.CodeAnalysis.CSharp.Testing;
 using Microsoft.CodeAnalysis.Testing;
+using SyntaxInspectors.Analyzers.Configuration.Si0007;
 using Xunit.Abstractions;
 
-namespace AcidJunkie.Analyzers.Tests.Diagnosers;
+namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
 [SuppressMessage("Code Smell", "S2699:Tests should include assertions", Justification = "This is done internally by AnalyzerTest.RunAsync()")]
 public sealed class ParameterOrderingAnalyzerTests(ITestOutputHelper testOutputHelper)
@@ -13,9 +13,9 @@ public sealed class ParameterOrderingAnalyzerTests(ITestOutputHelper testOutputH
 {
     [Theory]
     [InlineData("(string value)")]
-    [InlineData("{|AJ0007:(ILogger logger, string value)|}")]
-    [InlineData("{|AJ0007:(ILogger<TestClass> logger, string value, CancellationToken cancellationToken)|}")]
-    [InlineData("{|AJ0007:(CancellationToken cancellationToken, ILogger logger, string value)|}")]
+    [InlineData("{|SI0007:(ILogger logger, string value)|}")]
+    [InlineData("{|SI0007:(ILogger<TestClass> logger, string value, CancellationToken cancellationToken)|}")]
+    [InlineData("{|SI0007:(CancellationToken cancellationToken, ILogger logger, string value)|}")]
     [InlineData("(string value, ILogger logger, CancellationToken cancellationToken, params string[] values)")]
     public Task Theory_OnMethod(string parameters)
     {
@@ -39,7 +39,7 @@ public sealed class ParameterOrderingAnalyzerTests(ITestOutputHelper testOutputH
     }
 
     [Theory]
-    [InlineData(true, "{|AJ0007:(ILogger<TestClass> logger, string value)|}")]
+    [InlineData(true, "{|SI0007:(ILogger<TestClass> logger, string value)|}")]
     [InlineData(false, "(ILogger<TestClass> logger, string value)")]
     public Task Theory_IsEnabled(bool isEnabled, string parameterCode)
     {
@@ -62,7 +62,7 @@ public sealed class ParameterOrderingAnalyzerTests(ITestOutputHelper testOutputH
         => CreateTesterBuilder()
           .WithTestCode(code)
           .WithNugetPackage("Microsoft.Extensions.Logging.Abstractions", "9.0.8")
-          .SetEnabled(isEnabled, "AJ0007")
-          .WithEditorConfigLine($"{Aj0007Configuration.KeyNames.ParameterOrderingFlat} = {configValueForLoggerParameterPlacement ?? string.Empty}")
+          .SetEnabled(isEnabled, "SI0007")
+          .WithEditorConfigLine($"{Si0007Configuration.KeyNames.ParameterOrderingFlat} = {configValueForLoggerParameterPlacement ?? string.Empty}")
           .Build();
 }

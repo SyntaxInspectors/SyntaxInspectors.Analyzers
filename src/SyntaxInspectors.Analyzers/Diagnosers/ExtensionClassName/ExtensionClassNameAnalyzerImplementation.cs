@@ -1,12 +1,12 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.ExtensionClassName;
+namespace SyntaxInspectors.Analyzers.Diagnosers.ExtensionClassName;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class ExtensionClassNameAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<ExtensionClassNameAnalyzer>
@@ -58,7 +58,7 @@ internal sealed class ExtensionClassNameAnalyzerImplementation : SyntaxNodeAnaly
         internal static class Default
         {
             private const string Category = "Intention";
-            public const string DiagnosticId = "AJ0006";
+            public const string DiagnosticId = "SI0006";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Classes containing extension methods should have an `Extensions` suffix";
             public static readonly LocalizableString MessageFormat = "Rename the class `{0}` to `{1}` to indicate it contains extension methods";

@@ -1,12 +1,12 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using AcidJunkie.Analyzers.Configuration;
-using AcidJunkie.Analyzers.Support;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Diagnosers.LambdaVariableHidesOuterLambdaVariable;
+namespace SyntaxInspectors.Analyzers.Diagnosers.LambdaVariableHidesOuterLambdaVariable;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal sealed class LambdaVariableHidesOuterLambdaVariableAnalyzerImplementation : SyntaxNodeAnalyzerImplementationBase<LambdaVariableHidesOuterLambdaVariableAnalyzer>
@@ -50,7 +50,7 @@ internal sealed class LambdaVariableHidesOuterLambdaVariableAnalyzerImplementati
         internal static class Default
         {
             private const string Category = "Readability";
-            public const string DiagnosticId = "AJ0009";
+            public const string DiagnosticId = "SI0009";
             public static readonly string HelpLinkUri = HelpLinkFactory.CreateForDiagnosticId(DiagnosticId);
             public static readonly LocalizableString Title = "Lambda variable declaration hides outer lambda variable that share the same name";
             public static readonly LocalizableString MessageFormat = "The lambda variable `{0}` hides outer lambda variable that share the same name";

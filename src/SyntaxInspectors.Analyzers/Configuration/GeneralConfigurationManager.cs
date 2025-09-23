@@ -1,13 +1,13 @@
 using System.Collections.Immutable;
-using AcidJunkie.Analyzers.Extensions;
-using AcidJunkie.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Logging;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AcidJunkie.Analyzers.Configuration;
+namespace SyntaxInspectors.Analyzers.Configuration;
 
 internal static class GeneralConfigurationManager
 {
-    private const string LoggingTypeKeyName = "AcidJunkie_Analyzers.log_level";
+    private const string LoggingTypeKeyName = "SyntaxInspectors_Analyzers.log_level";
 
     private static readonly ImmutableDictionary<string, LogLevel> LoggingTypesByConfigValue = ImmutableDictionary.CreateRange
     (

@@ -1,4 +1,4 @@
-namespace AcidJunkie.Analyzers.Logging;
+namespace SyntaxInspectors.Analyzers.Logging;
 
 internal enum LogLevel
 {
