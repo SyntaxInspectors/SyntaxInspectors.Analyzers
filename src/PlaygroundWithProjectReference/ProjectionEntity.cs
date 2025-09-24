@@ -1,4 +1,4 @@
-namespace Playground;
+namespace PlaygroundWithProjectReference;
 
 public sealed class ProjectionEntity
 {

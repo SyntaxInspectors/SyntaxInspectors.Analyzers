@@ -1,4 +1,4 @@
-namespace Playground;
+namespace PlaygroundWithNugetPackage;
 
 public sealed class Entity
 {
