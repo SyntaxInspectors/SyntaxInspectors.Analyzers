@@ -10,6 +10,7 @@
 
     <ItemGroup>
 
+        <!-- TODO: Once we have our nuget package, we need to replace AcidJunkie.Analyzers with SyntaxInspectors.Analyzers here -->
         <PackageReference Include="AcidJunkie.Analyzers" Version="1.0.0-prerelease-86">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

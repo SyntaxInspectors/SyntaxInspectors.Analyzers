@@ -30,7 +30,7 @@
     <Project Path="SyntaxInspectors.Analyzers.Tests\SyntaxInspectors.Analyzers.Tests.csproj" />
   </Folder>
   <Folder Name="/4. Playgrounds/">
-    <Project Path="Playground2\Playground2.csproj" Type="Classic C#" />
-    <Project Path="Playground\Playground.csproj" Type="Classic C#" />
+    <Project Path="PlaygroundWithNugetPackage\PlaygroundWithNugetPackage.csproj" Type="Classic C#" />
+    <Project Path="PlaygroundWithProjectReference\PlaygroundWithProjectReference.csproj" Type="Classic C#" />
   </Folder>
 </Solution>

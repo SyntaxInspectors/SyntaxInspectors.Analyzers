@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Playground2;
+namespace PlaygroundWithProjectReference;
 
 internal sealed class TestContext : DbContext
 {

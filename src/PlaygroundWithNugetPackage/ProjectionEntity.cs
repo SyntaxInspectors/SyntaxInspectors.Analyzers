@@ -1,4 +1,4 @@
-namespace Playground2;
+namespace PlaygroundWithNugetPackage;
 
 public sealed class ProjectionEntity
 {

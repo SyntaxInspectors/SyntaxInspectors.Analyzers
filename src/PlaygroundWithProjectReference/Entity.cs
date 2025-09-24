@@ -1,4 +1,4 @@
-namespace Playground2;
+namespace PlaygroundWithProjectReference;
 
 public sealed class Entity
 {
