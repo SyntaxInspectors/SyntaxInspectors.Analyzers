@@ -3,13 +3,12 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <IncludeBuildOutput>false</IncludeBuildOutput>
-        <Version>1.0.1</Version>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <PackageId>Dummy-CodeFixer</PackageId>
         <GenerateDependencyFile>false</GenerateDependencyFile>
         <developmentDependency>true</developmentDependency>
-        <Description>SyntaxInspectors Analyzers</Description>
-        <PackageTags>SyntaxInspectors.Analyzers, analyzers</PackageTags>
+        <Description>Done in project SyntaxInspectors.Analyzers.Pack</Description>
+        <PackageTags>Done in project SyntaxInspectors.Analyzers.Pack</PackageTags>
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <BaseOutputPath>bin\$(RoslynVersion)\</BaseOutputPath>
         <NoWarn>$(NoWarn);RS1026;RS2007</NoWarn>
@@ -19,6 +18,10 @@
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" PrivateAssets="all"/>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all"/>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive"/>
+        <PackageReference Include="Meziantou.Polyfill" Version="1.0.52">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
