@@ -18,7 +18,7 @@ function CompileForSpecificRoslynVersion([string] $RoslynVersion, [string] $Targ
 
 function CompileAll {
     $targets = @("netstandard2.0")
-    $roslynVersions = @("4.8", "4.9", "4.10", "4.11", "4.12", "4.13", "4.14")
+    $roslynVersions = @("4.8", "4.9.2", "4.10", "4.11", "4.12", "4.13", "4.14")
 
     foreach ($target in $targets) {
         foreach ($roslynVersion in $roslynVersions) {
@@ -34,9 +34,8 @@ Push-Location $PSScriptRoot
 
 try {
     CleanUp
-    CompileForSpecificRoslynVersion -RoslynVersion 4.14 -TargetFramework "net9.0"
+    CompileForSpecificRoslynVersion -RoslynVersion 4.14 -TargetFramework "net9.0" # only needed once as we don't pack it
 
-    CleanUp
     CompileAll
 }
 finally {
