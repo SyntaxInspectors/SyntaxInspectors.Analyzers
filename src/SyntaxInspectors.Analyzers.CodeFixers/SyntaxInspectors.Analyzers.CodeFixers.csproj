@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-        <PackageId>Dummy-CodeFixer</PackageId>
+        <PackageId>SyntaxInspectors.CodeFixer</PackageId>
         <GenerateDependencyFile>false</GenerateDependencyFile>
         <developmentDependency>true</developmentDependency>
         <Description>Done in project SyntaxInspectors.Analyzers.Pack</Description>
@@ -12,20 +11,39 @@
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <BaseOutputPath>bin\$(RoslynVersion)\</BaseOutputPath>
         <NoWarn>$(NoWarn);RS1026;RS2007</NoWarn>
+
+        <!-- Multi target so we can benefit from newer .NET/C# features and many of them get polyfilled (see below) -->
+        <TargetFrameworks>net9.0;netstandard2.0</TargetFrameworks>
+
+        <NoWarn>
+            <!-- Disable RS1041 since we multi-target -->
+            $(NoWarn);RS1041;
+        </NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" PrivateAssets="all"/>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all"/>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
         <PackageReference Include="Meziantou.Polyfill" Version="1.0.52">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj"/>
+    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+        <ProjectReference Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj">
+            <SetTargetFramework>TargetFramework=netstandard2.0</SetTargetFramework>
+        </ProjectReference>
     </ItemGroup>
 
+    <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+        <ProjectReference Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj">
+            <SetTargetFramework>TargetFramework=net9.0</SetTargetFramework>
+        </ProjectReference>
+    </ItemGroup>
+    
 </Project>

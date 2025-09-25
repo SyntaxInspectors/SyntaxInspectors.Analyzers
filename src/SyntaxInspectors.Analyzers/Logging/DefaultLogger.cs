@@ -109,6 +109,7 @@ internal sealed class DefaultLogger<TContext> : ILogger<TContext>
 
     [SuppressMessage("Major Code Smell", "S6354:Use a testable date/time provider")]
     [SuppressMessage("Major Code Smell", "S6566:Use \"DateTimeOffset\" instead of \"DateTime\"")]
+    [SuppressMessage("Design", "MA0045:Do not use blocking calls in a sync method (need to make calling method async)", Justification = "This logger is expected to be synchronous")]
     private void WriteLineCore(LogLevel logLevel, string message, string memberName)
     {
         if (logLevel < LogLevel)

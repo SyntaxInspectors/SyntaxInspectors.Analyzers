@@ -9,31 +9,33 @@ function CleanUp
     Get-ChildItem -Recurse -Filter "bin" -Directory | Remove-Item -Recurse
 }
 
-function CompileForSpecificRoslynVersion([string] $RoslynVersion) {
-    Write-Host "Compiling 'SyntaxInspectors.Analyzers' for roslyn$RoslynVersion" -ForegroundColor Cyan
-    dotnet.exe build SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn$RoslynVersion
-    Write-Host "Compiling 'SyntaxInspectors.Analyzers.CodeFixers' for roslyn$RoslynVersion" -ForegroundColor Cyan
-    dotnet.exe build SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn$RoslynVersion
+function CompileForSpecificRoslynVersion([string] $RoslynVersion, [string] $TargetFramework) {
+    Write-Host "Compiling 'SyntaxInspectors.Analyzers' for roslyn$RoslynVersion and $TargetFramework" -ForegroundColor Cyan
+    dotnet.exe build SyntaxInspectors.Analyzers/SyntaxInspectors.Analyzers.csproj --configuration Release /p:RoslynVersion=roslyn$RoslynVersion /p:TargetFramework=$TargetFramework
+    Write-Host "Compiling 'SyntaxInspectors.Analyzers.CodeFixers' for roslyn$RoslynVersion and $TargetFramework" -ForegroundColor Cyan
+    dotnet.exe build SyntaxInspectors.Analyzers.CodeFixers/SyntaxInspectors.Analyzers.CodeFixers.csproj --configuration Release /p:RoslynVersion=roslyn$RoslynVersion /p:TargetFramework=$TargetFramework
 }
 
 function CompileAll {
+    $targets = @("netstandard2.0")
+    $roslynVersions = @("4.8", "4.9.2", "4.10", "4.11", "4.12", "4.13", "4.14")
 
-    CompileForSpecificRoslynVersion "4.8"
-    CompileForSpecificRoslynVersion "4.9.2"
-    CompileForSpecificRoslynVersion "4.10"
-    CompileForSpecificRoslynVersion "4.11"
-    CompileForSpecificRoslynVersion "4.12"
-    CompileForSpecificRoslynVersion "4.13"
-    CompileForSpecificRoslynVersion "4.14"
+    foreach ($target in $targets) {
+        foreach ($roslynVersion in $roslynVersions) {
+            CompileForSpecificRoslynVersion -RoslynVersion $roslynVersion -TargetFramework $target
+        }
+    }
 
-    dotnet restore SyntaxInspectors.Analyzers.Pack/SyntaxInspectors.Analyzers.Pack.csproj
-    dotnet pack SyntaxInspectors.Analyzers.Pack/SyntaxInspectors.Analyzers.Pack.csproj --configuration Release --no-build 
+    dotnet restore SyntaxInspectors.Analyzers.Pack/SyntaxInspectors.Analyzers.Pack.csproj /p:TargetFramework=netstandard2.0
+    dotnet pack SyntaxInspectors.Analyzers.Pack/SyntaxInspectors.Analyzers.Pack.csproj --configuration Release --no-build /p:TargetFramework=netstandard2.0
 }
 
 Push-Location $PSScriptRoot
 
 try {
     CleanUp
+    CompileForSpecificRoslynVersion -RoslynVersion 4.14 -TargetFramework "net9.0" # only needed once as we don't pack it
+
     CompileAll
 }
 finally {
