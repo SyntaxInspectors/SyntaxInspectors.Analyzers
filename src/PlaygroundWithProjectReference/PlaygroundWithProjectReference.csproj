@@ -15,7 +15,7 @@
 
     <ItemGroup>
         <!--
-         To simplify development Sofia.Analyzers multi-targets .NET9 and netstandard2.0.
+         To simplify development SyntaxInspectors.Analyzers multi-targets .NET9 and netstandard2.0.
          However, for analyzing only netstandard2.0 can be used. Other flavors are not supported, this is a known issue by Roslyn team.
          Thus, we should force to target netstandard2.0.
          -->
