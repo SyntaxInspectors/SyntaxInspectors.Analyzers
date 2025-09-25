@@ -9,6 +9,7 @@ namespace SyntaxInspectors.Analyzers.Logging;
 [SuppressMessage("Performance", "CA1822:Mark members as static")]
 [SuppressMessage("Major Code Smell", "S6354:Use a testable date/time provider")]
 [SuppressMessage("Major Code Smell", "S6566:Use \"DateTimeOffset\" instead of \"DateTime\"")]
+[SuppressMessage("Design", "MA0045:Do not use blocking calls in a sync method (need to make calling method async)", Justification = "This logger is expected to be synchronous")]
 internal static class LoggerExtensions
 {
     public static void ReportDiagnostic<TAnalyzer>(this ILogger<TAnalyzer>? logger, DiagnosticDescriptor rule, Location location, params object?[] messageArgs)

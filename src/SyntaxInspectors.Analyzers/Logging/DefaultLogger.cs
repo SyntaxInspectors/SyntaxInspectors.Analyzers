@@ -13,11 +13,13 @@ internal static class DefaultLogger
     private const string ProcessIdPlaceholder = "{ProcessId}";
     private const string ThreadIdPlaceholder = "{ThreadId}";
 
+#pragma warning disable IDE0032 // We cannot use auto properties with ThreadStatic
     [ThreadStatic]
     private static string? ThreadStaticFilePath;
 
     [ThreadStatic]
     private static string? ThreadStaticDurationMeasurementFilePath;
+#pragma warning restore IDE0032
 
     public static int ProcessId { get; } = GetCurrentProcessId();
     public static int MaxAnalyzerClassNameLength { get; } = GetMaxAnalyzerClassNameLength();
@@ -34,8 +36,8 @@ internal static class DefaultLogger
                 return ThreadStaticFilePath;
             }
 
-            var logFileName = logFileNamePattern.Replace(ProcessIdPlaceholder, ProcessId.ToString(CultureInfo.InvariantCulture))
-                                                .Replace(ThreadIdPlaceholder, Environment.CurrentManagedThreadId.ToString(CultureInfo.InvariantCulture));
+            var logFileName = logFileNamePattern.Replace(ProcessIdPlaceholder, ProcessId.ToString(CultureInfo.InvariantCulture), StringComparison.Ordinal)
+                                                .Replace(ThreadIdPlaceholder, Environment.CurrentManagedThreadId.ToString(CultureInfo.InvariantCulture), StringComparison.Ordinal);
 
             return ThreadStaticFilePath = Path.Combine(LogDirectoryPath, logFileName);
         }
@@ -52,8 +54,8 @@ internal static class DefaultLogger
                 return ThreadStaticDurationMeasurementFilePath;
             }
 
-            var logFileName = durationMeasurementLogFileNamePattern.Replace(ProcessIdPlaceholder, ProcessId.ToString(CultureInfo.InvariantCulture))
-                                                                   .Replace(ThreadIdPlaceholder, Environment.CurrentManagedThreadId.ToString(CultureInfo.InvariantCulture));
+            var logFileName = durationMeasurementLogFileNamePattern.Replace(ProcessIdPlaceholder, ProcessId.ToString(CultureInfo.InvariantCulture), StringComparison.Ordinal)
+                                                                   .Replace(ThreadIdPlaceholder, Environment.CurrentManagedThreadId.ToString(CultureInfo.InvariantCulture), StringComparison.Ordinal);
 
             return ThreadStaticDurationMeasurementFilePath = Path.Combine(LogDirectoryPath, logFileName);
         }
@@ -83,6 +85,7 @@ internal static class DefaultLogger
 [SuppressMessage("MicrosoftCodeAnalysisCorrectness", "RS1035:Do not use APIs banned for analyzers")]
 [SuppressMessage("Major Code Smell", "S6354:Use a testable date/time provider")]
 [SuppressMessage("Performance", "CA1822:Mark members as static")]
+[SuppressMessage("Design", "MA0045:Do not use blocking calls in a sync method (need to make calling method async)", Justification = "The logger is expected to be synchronous")]
 internal sealed class DefaultLogger<TContext> : ILogger<TContext>
     where TContext : class
 {
