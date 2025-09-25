@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace Playground;
+namespace PlaygroundWithProjectReference;
 
 internal sealed class MyService
 {

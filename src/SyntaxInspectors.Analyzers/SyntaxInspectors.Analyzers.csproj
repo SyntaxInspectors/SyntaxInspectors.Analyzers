@@ -9,9 +9,8 @@
         <IsPackable>false</IsPackable>
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <NoWarn>$(NoWarn);RS1026;RS2007</NoWarn>
-        <PackageId>SyntaxInspectors.Analyzers</PackageId>
-        <PackageTags>SyntaxInspectors.Analyzers, analyzers</PackageTags>
-        <Version>1.0.1</Version>
+        <PackageId>Dummy-Analyzers</PackageId>
+        <PackageTags>Dummy - Done in project SyntaxInspectors.Analyzers.Pack</PackageTags>
         <developmentDependency>true</developmentDependency>
 
         <!-- Multi target so we can benefit from newer .NET/C# features and many of them get polyfilled (see below) -->

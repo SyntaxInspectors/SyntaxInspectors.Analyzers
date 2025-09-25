@@ -2,13 +2,12 @@
 
     <PropertyGroup>
         <IncludeBuildOutput>false</IncludeBuildOutput>
-        <Version>1.0.1</Version>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <PackageId>SyntaxInspectors.CodeFixer</PackageId>
         <GenerateDependencyFile>false</GenerateDependencyFile>
         <developmentDependency>true</developmentDependency>
-        <Description>SyntaxInspectors Analyzers</Description>
-        <PackageTags>SyntaxInspectors.Analyzers, analyzers</PackageTags>
+        <Description>Done in project SyntaxInspectors.Analyzers.Pack</Description>
+        <PackageTags>Done in project SyntaxInspectors.Analyzers.Pack</PackageTags>
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <BaseOutputPath>bin\$(RoslynVersion)\</BaseOutputPath>
         <NoWarn>$(NoWarn);RS1026;RS2007</NoWarn>

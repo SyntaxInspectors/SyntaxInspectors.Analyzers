@@ -85,6 +85,7 @@ internal static class DefaultLogger
 [SuppressMessage("MicrosoftCodeAnalysisCorrectness", "RS1035:Do not use APIs banned for analyzers")]
 [SuppressMessage("Major Code Smell", "S6354:Use a testable date/time provider")]
 [SuppressMessage("Performance", "CA1822:Mark members as static")]
+[SuppressMessage("Design", "MA0045:Do not use blocking calls in a sync method (need to make calling method async)", Justification = "The logger is expected to be synchronous")]
 internal sealed class DefaultLogger<TContext> : ILogger<TContext>
     where TContext : class
 {

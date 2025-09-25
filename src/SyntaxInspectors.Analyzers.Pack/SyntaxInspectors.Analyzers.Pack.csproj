@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <!-- <OutputItemType>Analyzer</OutputItemType> -->
         <Copyright>2025 SyntaxInspectors</Copyright>
         <Description>SyntaxInspectors Analyzers</Description>
         <EnableDefaultItems>false</EnableDefaultItems>
@@ -16,12 +15,12 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes>Initial version.</PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageTags>SyntaxInspectors.Analyzers, analyzers</PackageTags>
-        <PackageVersion>0.0.1</PackageVersion>
+        <PackageTags> Done in project SyntaxInspectors.Analyzers.Pack</PackageTags>
+        <PackageVersion>0.0.0</PackageVersion>
         <RepositoryUrl>https://github.com/SyntaxInspectors/SyntaxInspectors.Analyzerss</RepositoryUrl>
         <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <Version>0.0.1</Version>
+        <Version>0.0.0</Version>
         <developmentDependency>true</developmentDependency>
     </PropertyGroup>
 

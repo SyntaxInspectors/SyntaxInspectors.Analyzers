@@ -10,11 +10,18 @@ internal static class CompilationAnalysisContextExtensions
 {
     private const string EditorConfigFileName = ".editorconfig";
 
-    public static void ReportValidationError(this in SyntaxNodeAnalysisContext context, ConfigurationError error)
+    public static void ReportConfigurationValidationError(this in SyntaxNodeAnalysisContext context, ConfigurationError error)
     {
-        var path = context.Options.AdditionalFiles.FirstOrDefault(a => a.Path.Contains(EditorConfigFileName, StringComparison.Ordinal))?.Path ?? EditorConfigFileName;
-        var location = Location.Create(path, TextSpan.FromBounds(0, 0), new LinePositionSpan(new LinePosition(0, 0), new LinePosition(0, 0)));
+        var path = GetConfigFileName(context);
+        var linePositionSpan = new LinePositionSpan(new LinePosition(0, 0), new LinePosition(0, 0));
+        var location = Location.Create(path, TextSpan.FromBounds(0, 0), linePositionSpan);
         var rule = Diagnostic.Create(CommonRules.InvalidConfigurationValue.Rule, location, error.KeyName, error.FilePath, error.Reason);
         context.ReportDiagnostic(rule);
+    }
+
+    private static string GetConfigFileName(in SyntaxNodeAnalysisContext context)
+    {
+        var file = context.Options.AdditionalFiles.FirstOrDefault(a => a.Path.Contains(EditorConfigFileName, StringComparison.OrdinalIgnoreCase));
+        return file?.Path ?? EditorConfigFileName;
     }
 }

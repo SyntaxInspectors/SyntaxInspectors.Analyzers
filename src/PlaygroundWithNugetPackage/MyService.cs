@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace Playground2;
+namespace PlaygroundWithNugetPackage;
 
 internal sealed class MyService
 {
