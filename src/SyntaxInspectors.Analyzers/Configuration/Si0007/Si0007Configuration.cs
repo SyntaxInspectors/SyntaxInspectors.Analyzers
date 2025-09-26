@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using SyntaxInspectors.Analyzers.Configuration.Aj0007;
 
 namespace SyntaxInspectors.Analyzers.Configuration.Si0007;
 
