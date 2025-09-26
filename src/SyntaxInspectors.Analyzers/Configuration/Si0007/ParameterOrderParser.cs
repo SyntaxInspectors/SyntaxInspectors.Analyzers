@@ -1,10 +1,9 @@
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
-using SyntaxInspectors.Analyzers.Configuration.Si0007;
 using SyntaxInspectors.Analyzers.Extensions;
 
-namespace SyntaxInspectors.Analyzers.Configuration.Aj0007;
+namespace SyntaxInspectors.Analyzers.Configuration.Si0007;
 
 [SuppressMessage("ReSharper", "UseCollectionExpression", Justification = "Not supported in lower versions of Roslyn")]
 internal static class ParameterOrderParser
