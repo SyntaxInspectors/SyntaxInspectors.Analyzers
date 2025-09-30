@@ -48,13 +48,47 @@ internal sealed class UseIsForNullComparisonAnalyzerImplementation : SyntaxNodeA
 
         if (IsWithinQueryableWhere(equalsExpression))
         {
-            return;
+            return; // we allow the usage of '==' or '!=' within Queryable.Where calls
+        }
+
+        if (IsWithinQueryableLinq(equalsExpression))
+        {
+            return; // we allow the usage of '==' or '!=' within LINQ queries
         }
 
         var isOrIsNot = equalsExpression.IsKind(SyntaxKind.EqualsExpression) ? "is" : "is not";
         var intention = equalsExpression.IsKind(SyntaxKind.EqualsExpression) ? "null" : "not null";
 
         Context.ReportDiagnostic(Diagnostic.Create(DiagnosticRules.Default.Rule, equalsExpression.OperatorToken.GetLocation(), isOrIsNot, intention, equalsExpression.OperatorToken.Text));
+    }
+
+    private bool IsWithinQueryableLinq(BinaryExpressionSyntax binaryExpression)
+    {
+        if (!binaryExpression.IsKind(SyntaxKind.EqualsExpression) && !binaryExpression.IsKind(SyntaxKind.NotEqualsExpression))
+        {
+            return false;
+        }
+
+        var queryExpression = binaryExpression.Ancestors().OfType<QueryExpressionSyntax>().FirstOrDefault();
+        if (queryExpression is null)
+        {
+            return false;
+        }
+
+        if (binaryExpression.Left is not IdentifierNameSyntax identifier)
+        {
+            return false;
+        }
+
+        var sourceDefinition = LinqIdentifierResolver.Resolve(queryExpression, identifier.Identifier.ValueText);
+        if (sourceDefinition is null)
+        {
+            return false;
+        }
+
+        var sourceType = Context.SemanticModel.GetTypeInfo(sourceDefinition).Type;
+        return sourceType is not null
+               && sourceType.ToDisplayString().StartsWith("System.Linq.IQueryable");
     }
 
     private bool IsWithinQueryableWhere(BinaryExpressionSyntax binaryExpression)
