@@ -37,13 +37,10 @@ public sealed class UseIsForNullComparisonAnalyzerTests(ITestOutputHelper testOu
 
                             public static class Test
                             {
-                                public static void DoSomething( string value)
+                                public static void DoSomething(IQueryable<string> values)
                                 {
-                                    var _ = GetQueryable().Where(a => a == null);
+                                    var _ = values.Where(a => a == null);
                                 }
-
-                                private static IQueryable<string> GetQueryable()
-                                   => new string[0].AsQueryable();
                             }
                             """;
 
@@ -58,7 +55,7 @@ public sealed class UseIsForNullComparisonAnalyzerTests(ITestOutputHelper testOu
         var code = $$"""
                      public static class Test
                      {
-                         public static void DoSomething( string value)
+                         public static void DoSomething(string value)
                          {
                             {{insertionCode}}
                          }
@@ -66,6 +63,52 @@ public sealed class UseIsForNullComparisonAnalyzerTests(ITestOutputHelper testOu
                      """;
 
         return ValidateAsync(code, isEnabled);
+    }
+
+    [Fact]
+    public Task InsideLinq_WithEnumerable_ThenDiagnose()
+    {
+        const string code = """
+                            using System.Collections.Generic;
+                            using System.Linq;
+
+                            public static class Test
+                            {
+                                public static void DoSomething(IEnumerable<string?> values)
+                                {
+                                    var _ =
+                                        from v in values
+                                        join v2 in values on v equals v2
+                                        where v {|SI0011:==|} null
+                                        select v;
+                                }
+                            }
+                            """;
+
+        return ValidateAsync(code);
+    }
+
+    [Fact]
+    public Task InsideLinq_WithQueryable_ThenOk()
+    {
+        const string code = """
+                            using System.Collections.Generic;
+                            using System.Linq;
+
+                            public static class Test
+                            {
+                                public static void DoSomething(IQueryable<string?> values)
+                                {
+                                    var _ =
+                                        from v in values
+                                        join v2 in values on v equals v2
+                                        where v == null
+                                        select v;
+                                }
+                            }
+                            """;
+
+        return ValidateAsync(code);
     }
 
     private Task ValidateAsync(string code)
