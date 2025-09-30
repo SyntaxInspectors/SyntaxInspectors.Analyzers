@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
@@ -10,6 +11,7 @@ internal static class ParameterOrderParser
 {
     private static readonly char[] ParameterSplittingChars = ['|'];
     private static readonly Regex AlwaysFalseRegex = new(Regex.Escape(@"\A\\?"), RegexOptions.Compiled, TimeSpan.FromSeconds(1));
+    private static readonly ConcurrentDictionary<string, Regex> RegexCache = new(StringComparer.Ordinal);
 
     public static IReadOnlyList<string> SplitConfigurationParameterOrder(string parameterOrder)
         => parameterOrder.Split(ParameterSplittingChars, StringSplitOptions.RemoveEmptyEntries);
@@ -26,6 +28,9 @@ internal static class ParameterOrderParser
           .ToImmutableArray();
 
     private static Regex TransformToRegex(string expression)
+        => RegexCache.GetOrAdd(expression, TransformToRegexCore);
+
+    private static Regex TransformToRegexCore(string expression)
     {
         var pattern = @$"\A{Regex.Escape(expression).Replace(@"\*", ".*", StringComparison.Ordinal)}\z";
         return new Regex(pattern, RegexOptions.Compiled, TimeSpan.FromSeconds(1));
