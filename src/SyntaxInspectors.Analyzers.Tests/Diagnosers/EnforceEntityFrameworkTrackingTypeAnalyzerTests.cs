@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using SyntaxInspectors.Analyzers.Diagnosers.EnforceEntityFrameworkTrackingType;
-using Xunit.Abstractions;
 
 namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 

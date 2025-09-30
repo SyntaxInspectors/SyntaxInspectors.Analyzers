@@ -1,8 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using SyntaxInspectors.Analyzers.CodeFixers.Tests.Helpers;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Diagnostics;
-using Xunit.Abstractions;
+using SyntaxInspectors.Analyzers.Tests.Helpers;
 
 namespace SyntaxInspectors.Analyzers.Tests;
 

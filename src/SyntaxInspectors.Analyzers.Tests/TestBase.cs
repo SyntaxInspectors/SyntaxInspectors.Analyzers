@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using SyntaxInspectors.Analyzers.Tests.Helpers;
 using Microsoft.CodeAnalysis.Diagnostics;
-using Xunit.Abstractions;
 
 namespace SyntaxInspectors.Analyzers.Tests;
 
