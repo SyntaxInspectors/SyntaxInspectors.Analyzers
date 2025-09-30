@@ -3,7 +3,6 @@ using SyntaxInspectors.Analyzers.Diagnosers.ParameterOrdering;
 using Microsoft.CodeAnalysis.CSharp.Testing;
 using Microsoft.CodeAnalysis.Testing;
 using SyntaxInspectors.Analyzers.Configuration.Si0007;
-using Xunit.Abstractions;
 
 namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
@@ -35,7 +34,7 @@ public sealed class ParameterOrderingAnalyzerTests(ITestOutputHelper testOutputH
                      }
                      """;
 
-        return CreateTester(code, true).RunAsync();
+        return CreateTester(code, true).RunAsync(TestContext.Current.CancellationToken);
     }
 
     [Theory]
@@ -55,7 +54,7 @@ public sealed class ParameterOrderingAnalyzerTests(ITestOutputHelper testOutputH
                      }
                      """;
 
-        return CreateTester(code, isEnabled).RunAsync();
+        return CreateTester(code, isEnabled).RunAsync(TestContext.Current.CancellationToken);
     }
 
     private CSharpAnalyzerTest<ParameterOrderingAnalyzer, DefaultVerifier> CreateTester(string code, bool isEnabled, string? configValueForLoggerParameterPlacement = null)

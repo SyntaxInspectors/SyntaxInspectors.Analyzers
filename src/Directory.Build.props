@@ -18,10 +18,10 @@
         <!-- MA0026: We know TODO items should be tackled, let's not create Errors for them -->
         <!-- S1185:  We know TODO items should be tackled, let's not create Errors for them -->
         <WarningsNotAsErrors>MA0025;MA0026</WarningsNotAsErrors>
-        
+
         <!-- See https://github.com/dotnet/roslyn/blob/a6013f3213c902c0973b2d371c3007217d610533/docs/compilers/CSharp/Warnversion%20Warning%20Waves.md -->
         <WarningLevel>9999</WarningLevel>
-        
+
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
@@ -44,7 +44,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Meziantou.Analyzer" Version="2.0.212">
+        <PackageReference Include="Meziantou.Analyzer" Version="2.0.221">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
@@ -71,12 +71,12 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsTestProject)' == 'true'">
-        <PackageReference Include="FluentAssertions" Version="6.12.2"/>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
-        <PackageReference Include="xunit" Version="2.9.2"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" privateAssets="all"/>
-        <PackageReference Include="JunitXml.TestLogger" Version="4.1.0"/>
-        <PackageReference Include="coverlet.collector" Version="6.0.2">
+        <PackageReference Include="Shouldly" Version="4.3.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1"/>
+        <PackageReference Include="xunit.v3" Version="3.1.0"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" privateAssets="all"/>
+        <PackageReference Include="JunitXml.TestLogger" Version="6.1.0"/>
+        <PackageReference Include="coverlet.collector" Version="6.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

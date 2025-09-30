@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using SyntaxInspectors.Analyzers.Diagnosers.WarningSuppression;
-using Xunit.Abstractions;
 
 namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 
@@ -15,7 +14,7 @@ public sealed class GeneralWarningSuppressionAnalyzerTests(ITestOutputHelper tes
         await CreateTesterBuilder()
              .WithTestCode(code)
              .Build()
-             .RunAsync();
+             .RunAsync(TestContext.Current.CancellationToken);
     }
 
     [Fact]

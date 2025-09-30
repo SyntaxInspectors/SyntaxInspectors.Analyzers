@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using SyntaxInspectors.Analyzers.Logging;
-using FluentAssertions;
+using Shouldly;
 
 namespace SyntaxInspectors.Analyzers.Tests.Logging;
 
@@ -18,12 +18,12 @@ public sealed class DefaultLoggerTests
 
         // assert
         var logFileContent = GetLogFileContent();
-        logFileContent.Should().NotBeEmpty();
-        logFileContent.Should().Contain("Context=DefaultLoggerTests");
-        logFileContent.Should().Contain($"Method={nameof(WriteLine_ShouldContainAllInformation)}");
-        logFileContent.Should().Contain("Message=test1");
-        logFileContent.Should().Contain($"PID={Environment.ProcessId}");
-        logFileContent.Should().Contain($"TID={Environment.CurrentManagedThreadId}");
+        logFileContent.ShouldNotBeEmpty();
+        logFileContent.ShouldContain("Context=DefaultLoggerTests");
+        logFileContent.ShouldContain($"Method={nameof(WriteLine_ShouldContainAllInformation)}");
+        logFileContent.ShouldContain("Message=test1");
+        logFileContent.ShouldContain($"PID={Environment.ProcessId}");
+        logFileContent.ShouldContain($"TID={Environment.CurrentManagedThreadId}");
     }
 
     [SuppressMessage("Dunno", "MA0045:Do not use blocking calls in a sync method (need to make calling method async)", Justification = "We're in non-async context here")]

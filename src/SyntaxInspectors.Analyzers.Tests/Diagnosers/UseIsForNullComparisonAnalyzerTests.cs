@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using SyntaxInspectors.Analyzers.Diagnosers.UseIsForNullComparison;
-using Xunit.Abstractions;
 
 namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 

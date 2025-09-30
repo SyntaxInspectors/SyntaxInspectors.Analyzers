@@ -1,7 +1,4 @@
 using System.Collections.Immutable;
-using SyntaxInspectors.Analyzers.Extensions;
-using SyntaxInspectors.Analyzers.Tests.Helpers;
-using SyntaxInspectors.Analyzers.Tests.Runtime;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.CSharp;
@@ -9,9 +6,10 @@ using Microsoft.CodeAnalysis.CSharp.Testing;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Testing;
 using Microsoft.CodeAnalysis.Text;
-using Xunit.Abstractions;
+using SyntaxInspectors.Analyzers.Extensions;
+using SyntaxInspectors.Analyzers.Tests.Runtime;
 
-namespace SyntaxInspectors.Analyzers.CodeFixers.Tests.Helpers;
+namespace SyntaxInspectors.Analyzers.Tests.Helpers;
 
 internal static class CSharpCodeFixProviderTestBuilder
 {
