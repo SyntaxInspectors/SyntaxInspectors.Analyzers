@@ -5,7 +5,7 @@ namespace SyntaxInspectors.Analyzers.Configuration.Si0007;
 internal sealed class Si0007Configuration : IAnalyzerConfiguration
 {
     public static Si0007Configuration Default { get; } = new(true, Defaults.ParameterOrderFlat, Defaults.ParameterDescriptions);
-    public static Si0007Configuration Disabled { get; } = new(false, Defaults.ParameterOrderFlat, []);
+    public static Si0007Configuration Disabled { get; } = new(false, Defaults.ParameterOrderFlat, ImmutableArray<ParameterDescription>.Empty);
 
     public bool IsEnabled { get; }
     public ConfigurationError? ConfigurationError { get; }
