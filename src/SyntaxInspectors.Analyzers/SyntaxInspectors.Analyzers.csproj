@@ -3,12 +3,10 @@
     <PropertyGroup>
         <BaseOutputPath>bin\$(RoslynVersion)\</BaseOutputPath>
         <Description>SyntaxInspectors Analyzers</Description>
-        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <GenerateDependencyFile>false</GenerateDependencyFile>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <IsPackable>false</IsPackable>
         <NoPackageAnalysis>true</NoPackageAnalysis>
-        <NoWarn>$(NoWarn);RS1026;RS2007</NoWarn>
         <PackageId>Dummy-Analyzers</PackageId>
         <PackageTags>Dummy - Done in project SyntaxInspectors.Analyzers.Pack</PackageTags>
         <developmentDependency>true</developmentDependency>
@@ -18,8 +16,8 @@
 
         <NoWarn>
             <!-- Disable RS1041 since we multi-target -->
-            $(NoWarn);RS1041;RCS1231
-        </NoWarn>
+			$(NoWarn);RS1026;RS2007;RS1041;RCS1231
+		</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

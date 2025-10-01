@@ -17,6 +17,8 @@ dotnet_sort_system_directives_first = true
 csharp_style_namespace_declarations = file_scoped:error
 dotnet_diagnostic.ide0161.severity = error
 
+dotnet_style_namespace_match_folder = true
+
 # Seal internal types
 dotnet_diagnostic.ca1852.severity = error
 
@@ -134,6 +136,7 @@ dotnet_diagnostic.ide0082.severity = error
 dotnet_diagnostic.ide0090.severity = error
 dotnet_diagnostic.ide0100.severity = error
 dotnet_diagnostic.ide0110.severity = error
+dotnet_diagnostic.IDE0130.severity = error
 dotnet_diagnostic.ide0160.severity = none
 dotnet_diagnostic.ide0161.severity = error
 dotnet_diagnostic.ide0210.severity = none # Convert to top-level statement

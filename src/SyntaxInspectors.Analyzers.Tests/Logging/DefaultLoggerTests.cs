@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
-using SyntaxInspectors.Analyzers.Logging;
 using Shouldly;
+using SyntaxInspectors.Analyzers.Logging;
 
 namespace SyntaxInspectors.Analyzers.Tests.Logging;
 

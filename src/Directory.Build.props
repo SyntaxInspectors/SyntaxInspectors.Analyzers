@@ -3,7 +3,12 @@
         <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)</SolutionDir>
     </PropertyGroup>
 
-    <PropertyGroup>
+	<ItemGroup>
+		<CompilerVisibleProperty Include="RootNamespace" />
+		<CompilerVisibleProperty Include="ProjectDir" />
+	</ItemGroup>
+
+	<PropertyGroup>
         <!-- CA1014:  CLS compliance is no longer a must, even some MS .NET Core is not anymore enforcing it -->
         <!-- CA1032:  There should be no dead code, that applies to exception classes too -->
         <!-- CA1034:  Public nested types is a preference, many folks at MS, or even Jimmy Boggard acknowledge that -->
@@ -23,10 +28,12 @@
         <WarningLevel>9999</WarningLevel>
 
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
         <AnalysisLevel>latest</AnalysisLevel>
-        <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -42,7 +49,7 @@
         <!-- See https://www.meziantou.net/csharp-compiler-strict-mode.htm -->
         <Features>strict</Features>
     </PropertyGroup>
-
+    
     <ItemGroup>
         <PackageReference Include="Meziantou.Analyzer" Version="2.0.222">
             <PrivateAssets>all</PrivateAssets>

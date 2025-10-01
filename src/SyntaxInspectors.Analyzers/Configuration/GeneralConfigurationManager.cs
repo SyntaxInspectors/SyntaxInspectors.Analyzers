@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
+using Microsoft.CodeAnalysis.Diagnostics;
 using SyntaxInspectors.Analyzers.Extensions;
 using SyntaxInspectors.Analyzers.Logging;
-using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace SyntaxInspectors.Analyzers.Configuration;
 

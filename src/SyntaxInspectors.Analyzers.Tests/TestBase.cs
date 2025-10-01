@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
-using SyntaxInspectors.Analyzers.Tests.Helpers;
 using Microsoft.CodeAnalysis.Diagnostics;
+using SyntaxInspectors.Analyzers.Tests.Helpers;
 
 namespace SyntaxInspectors.Analyzers.Tests;
 
