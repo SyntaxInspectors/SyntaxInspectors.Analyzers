@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.9"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -20,21 +20,11 @@
          Thus, we should force to target netstandard2.0.
          -->
 
-        <!-- For Visual Studio -->
         <ProjectReference
-          Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj"
-          PrivateAssets="all"
-          ReferenceOutputAssembly="false"
-          OutputItemType="Analyzer"
-          Condition="'$(BuildingInsideVisualStudio)' == 'true'"
-          SetTargetFramework="TargetFramework=netstandard2.0" />
-
-        <!-- For Jetbrains Rider -->
-        <ProjectReference
-          Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj"
-          PrivateAssets="all"
-          ReferenceOutputAssembly="false"
-          OutputItemType="Analyzer"
-          Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
+                Include="..\SyntaxInspectors.Analyzers\SyntaxInspectors.Analyzers.csproj"
+                PrivateAssets="all"
+                ReferenceOutputAssembly="false"
+                OutputItemType="Analyzer"
+                SetTargetFramework="TargetFramework=netstandard2.0"/>
     </ItemGroup>
 </Project>
