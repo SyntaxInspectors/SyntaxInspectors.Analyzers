@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
-using SyntaxInspectors.Analyzers.Logging;
 using Microsoft.CodeAnalysis.Diagnostics;
+using SyntaxInspectors.Analyzers.Logging;
 
 namespace SyntaxInspectors.Analyzers.Extensions;
 

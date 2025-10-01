@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <IncludeBuildOutput>false</IncludeBuildOutput>
-        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <PackageId>SyntaxInspectors.CodeFixer</PackageId>
         <GenerateDependencyFile>false</GenerateDependencyFile>
         <developmentDependency>true</developmentDependency>
@@ -10,15 +9,14 @@
         <PackageTags>Done in project SyntaxInspectors.Analyzers.Pack</PackageTags>
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <BaseOutputPath>bin\$(RoslynVersion)\</BaseOutputPath>
-        <NoWarn>$(NoWarn);RS1026;RS2007</NoWarn>
-
+        
         <!-- Multi target so we can benefit from newer .NET/C# features and many of them get polyfilled (see below) -->
         <TargetFrameworks>net9.0;netstandard2.0</TargetFrameworks>
 
         <NoWarn>
             <!-- Disable RS1041 since we multi-target -->
-            $(NoWarn);RS1041;
-        </NoWarn>
+			$(NoWarn);RS1041;RS1026;RS2007;
+		</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

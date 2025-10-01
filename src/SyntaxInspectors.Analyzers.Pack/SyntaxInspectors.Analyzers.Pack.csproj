@@ -4,7 +4,6 @@
         <Copyright>2025 SyntaxInspectors</Copyright>
         <Description>SyntaxInspectors Analyzers</Description>
         <EnableDefaultItems>false</EnableDefaultItems>
-        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <GenerateDependencyFile>false</GenerateDependencyFile>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <NoPackageAnalysis>true</NoPackageAnalysis>

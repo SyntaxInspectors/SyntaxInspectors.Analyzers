@@ -209,8 +209,8 @@ internal static class TypeSymbolExtensions
         return namedTypeSymbol.Arity switch
         {
             1 when !typeSymbol.IsContainedInNamespace("System.Collections.Generic") => false,
-            0 when !typeSymbol.IsContainedInNamespace("System.Collections")         => false,
-            _                                                                       => typeSymbol.Name.EqualsOrdinal("IEnumerable")
+            0 when !typeSymbol.IsContainedInNamespace("System.Collections") => false,
+            _ => typeSymbol.Name.EqualsOrdinal("IEnumerable")
         };
     }
 

@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using SyntaxInspectors.Analyzers.Diagnosers.ParameterOrdering;
 using Microsoft.CodeAnalysis.CSharp.Testing;
 using Microsoft.CodeAnalysis.Testing;
 using SyntaxInspectors.Analyzers.Configuration.Si0007;
+using SyntaxInspectors.Analyzers.Diagnosers.ParameterOrdering;
 
 namespace SyntaxInspectors.Analyzers.Tests.Diagnosers;
 

@@ -1,11 +1,11 @@
 using System.Collections.Immutable;
-using SyntaxInspectors.Analyzers.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Testing;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Testing;
 using Microsoft.CodeAnalysis.Text;
+using SyntaxInspectors.Analyzers.Extensions;
 
 namespace SyntaxInspectors.Analyzers.Tests.Helpers;
 

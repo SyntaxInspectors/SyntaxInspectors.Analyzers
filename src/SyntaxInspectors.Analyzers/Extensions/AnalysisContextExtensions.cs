@@ -1,11 +1,11 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using SyntaxInspectors.Analyzers.Diagnosers;
-using SyntaxInspectors.Analyzers.Logging;
-using SyntaxInspectors.Analyzers.Support;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
+using SyntaxInspectors.Analyzers.Diagnosers;
+using SyntaxInspectors.Analyzers.Logging;
+using SyntaxInspectors.Analyzers.Support;
 
 namespace SyntaxInspectors.Analyzers.Extensions;
 

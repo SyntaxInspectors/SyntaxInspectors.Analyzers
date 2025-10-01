@@ -1,8 +1,8 @@
-using SyntaxInspectors.Analyzers.Configuration;
-using SyntaxInspectors.Analyzers.Diagnosers;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
+using SyntaxInspectors.Analyzers.Configuration;
+using SyntaxInspectors.Analyzers.Diagnosers;
 
 namespace SyntaxInspectors.Analyzers.Extensions;
 

@@ -1,5 +1,5 @@
-using SyntaxInspectors.Analyzers.Configuration;
 using Microsoft.CodeAnalysis.Diagnostics;
+using SyntaxInspectors.Analyzers.Configuration;
 
 namespace SyntaxInspectors.Analyzers.Logging;
 

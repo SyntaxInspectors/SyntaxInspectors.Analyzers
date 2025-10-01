@@ -102,9 +102,9 @@ internal sealed class DefaultLogger<TContext> : ILogger<TContext>
 
     private static string GetLogFilePath(LogLevel logLevel) => logLevel switch
     {
-        LogLevel.Full     => DefaultLogger.FilePath,
+        LogLevel.Full => DefaultLogger.FilePath,
         LogLevel.Duration => DefaultLogger.DurationMeasurementFilePath,
-        _                 => throw new InvalidOperationException($"The logger type '{logLevel}' is not known")
+        _ => throw new InvalidOperationException($"The logger type '{logLevel}' is not known")
     };
 
     [SuppressMessage("Major Code Smell", "S6354:Use a testable date/time provider")]

@@ -1,11 +1,11 @@
 using System.Collections.Immutable;
 using System.Composition;
-using SyntaxInspectors.Analyzers.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using SyntaxInspectors.Analyzers.Extensions;
 
 namespace SyntaxInspectors.Analyzers.CodeFixers;
 
@@ -49,7 +49,7 @@ public class UseIsForNullComparisonFixProvider : CodeFixProvider
             {
                 "==" => "Replace '==' by 'is'",
                 "!=" => "Replace '!=' by 'is not'",
-                _    => null
+                _ => null
             };
     }
 

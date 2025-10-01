@@ -23,9 +23,9 @@ internal sealed class Si0002ConfigurationProvider : ConfigurationProvider<Si0002
             var mode = GetMode(options);
             return mode switch
             {
-                Mode.Strict  => Si0002Configuration.Strict,
+                Mode.Strict => Si0002Configuration.Strict,
                 Mode.Relaxed => Si0002Configuration.Relaxed,
-                _            => throw new InvalidOperationException($"Unknown mode: {mode}")
+                _ => throw new InvalidOperationException($"Unknown mode: {mode}")
             };
         }
         catch (Exception ex)
