@@ -9,7 +9,7 @@ namespace SyntaxInspectors.Analyzers;
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class AsNoTrackingShouldBeFirstAnalyzer : DiagnosticAnalyzer
 {
-    private const string DiagnosticIdAsNoTracking = "SI1001";
+    private const string DiagnosticIdAsNoTracking = "SIEF1001";
     private static readonly DiagnosticDescriptor Rule = new(
         DiagnosticIdAsNoTracking,
         "AsNoTracking() should be first in the chain",
