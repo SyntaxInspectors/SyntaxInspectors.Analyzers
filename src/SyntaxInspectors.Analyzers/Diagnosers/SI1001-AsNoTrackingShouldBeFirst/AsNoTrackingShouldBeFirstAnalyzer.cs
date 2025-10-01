@@ -45,7 +45,6 @@ public class AsNoTrackingShouldBeFirstAnalyzer : DiagnosticAnalyzer
             return;
         }
 
-        // Get symbol to ensure it's the EF Core AsNoTracking
         var symbol = context.SemanticModel.GetSymbolInfo(memberAccess, cancellationToken: context.CancellationToken).Symbol;
         if (symbol is null)
         {
@@ -63,14 +62,12 @@ public class AsNoTrackingShouldBeFirstAnalyzer : DiagnosticAnalyzer
             return;
         }
 
-        // Traverse backwards to see if it's FIRST after DbSet  
         var expr = memberAccess.Expression;
         while (expr is Microsoft.CodeAnalysis.CSharp.Syntax.InvocationExpressionSyntax prevInvocation)
         {
             expr = (prevInvocation.Expression as Microsoft.CodeAnalysis.CSharp.Syntax.MemberAccessExpressionSyntax)?.Expression;
         }
 
-        // Now 'expr' is the root, typically a DbSet property  
         if (expr is null)
         {
             return;
@@ -78,13 +75,11 @@ public class AsNoTrackingShouldBeFirstAnalyzer : DiagnosticAnalyzer
 
         var typeInfo = context.SemanticModel.GetTypeInfo(expr, cancellationToken: context.CancellationToken).Type;
 
-        // Ensure it's a DbSet or valid for AsNoTracking  
         if (typeInfo?.Name.Contains("DbSet", StringComparison.Ordinal) != true)
         {
             return;
         }
 
-        // Check if the immediate parent of AsNoTracking is not a DbSet — this means it's not first  
         if (!(memberAccess.Expression is Microsoft.CodeAnalysis.CSharp.Syntax.IdentifierNameSyntax
             || (memberAccess.Expression is Microsoft.CodeAnalysis.CSharp.Syntax.MemberAccessExpressionSyntax rootMember && (context.SemanticModel.GetTypeInfo(rootMember, cancellationToken: context.CancellationToken).Type?.Name.Contains("DbSet", StringComparison.Ordinal) ?? false))))
         {
