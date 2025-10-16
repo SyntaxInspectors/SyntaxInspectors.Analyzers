@@ -54,8 +54,19 @@ internal sealed class BanSynchronousEntityFrameworkAnalyzerImplementation : Synt
             return;
         }
 
-        var diagnostic = Diagnostic.Create(DiagnosticRules.Default.Rule, invocation.GetLocation(), symbol.Name);
+        var location = GetDiagnosticLocation(invocation);
+        var diagnostic = Diagnostic.Create(DiagnosticRules.Default.Rule, location, symbol.Name);
         Context.ReportDiagnostic(diagnostic);
+    }
+
+    private static Location GetDiagnosticLocation(InvocationExpressionSyntax invocation)
+    {
+        if (invocation.Expression is MemberAccessExpressionSyntax memberAccess)
+        {
+            return memberAccess.Name.GetLocation();
+        }
+
+        return invocation.GetLocation();
     }
 
     private static bool IsPartOfExpressionTree(SyntaxNode node, SemanticModel model, CancellationToken cancellationToken)
